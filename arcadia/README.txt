@@ -1,13 +1,10 @@
-ARCADIA GitHub Pages 업로드용 v4
+ARCADIA GitHub Pages 업로드용 v6
 
-1. ZIP 압축을 풉니다.
-2. 폴더 안의 index.html, style.css, script.js, assets 폴더를 GitHub 저장소 최상단에 업로드합니다.
-3. GitHub Settings → Pages → Deploy from a branch → main / root를 선택합니다.
+수정:
+- 층별 이동 안내도의 3층 복도 / 2층 복도 / 로비 글자가
+  흰 배경에 묻히던 문제 수정
+- SVG 파일명을 movement_guide_v6.svg로 변경하여 캐시 방지
+- CSS/JS도 v6 파일명으로 변경
 
-v4 변경:
-- 시작 화면 바이탈 모니터 복원
-- 인트로 제목/소제목 2줄 구조
-- 핵심 기믹 제목 한 줄
-- 시설 이미지 영역을 화면 폭에 맞게 확장
-- 이동 안내도 SVG 전면 재작성
-- 캐스트 의료진 3명 / 환자 2명 분리 배치
+GitHub 저장소의 기존 파일을 전부 삭제한 뒤,
+이 ZIP 안의 파일 전체를 업로드하세요.
