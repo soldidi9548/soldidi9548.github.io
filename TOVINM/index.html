@@ -318,6 +318,120 @@
 }
 </style>
 
+
+<style id="royal-bgm-style">
+#royalBgmPlayer{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:99999;
+  width:248px;
+  font-family:inherit;
+  filter:drop-shadow(0 10px 24px rgba(0,0,0,.28));
+}
+#bgmToggle{
+  width:100%;
+  display:grid;
+  grid-template-columns:42px 1fr 30px;
+  align-items:center;
+  gap:11px;
+  padding:11px 13px;
+  border:1px solid rgba(191,160,101,.7);
+  background:
+    linear-gradient(135deg,rgba(30,25,30,.96),rgba(67,50,55,.96));
+  color:#f4ead9;
+  cursor:pointer;
+  text-align:left;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.05),
+    inset 0 0 22px rgba(0,0,0,.24);
+  backdrop-filter:blur(8px);
+}
+#bgmToggle::before{
+  content:"";
+  position:absolute;
+  inset:5px;
+  border:1px solid rgba(214,184,125,.22);
+  pointer-events:none;
+}
+.bgmDisc{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(224,196,139,.75);
+  background:
+    radial-gradient(circle at center,#c9a96c 0 7%,#241d23 8% 17%,#9c7a50 18% 20%,#171419 21% 100%);
+  box-shadow:inset 0 0 10px rgba(255,255,255,.07);
+}
+#royalBgmPlayer.playing .bgmDisc{
+  animation:bgmSpin 5.5s linear infinite;
+}
+@keyframes bgmSpin{to{transform:rotate(360deg)}}
+.bgmText{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.bgmText small{
+  color:#c8ad7a;
+  font-size:8px;
+  letter-spacing:.2em;
+}
+.bgmText strong{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.035em;
+}
+.bgmIcon{
+  display:grid;
+  place-items:center;
+  width:27px;
+  height:27px;
+  border:1px solid rgba(218,190,134,.55);
+  border-radius:50%;
+  color:#e4c98f;
+  font-size:10px;
+}
+.bgmVolumePanel{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px;
+  border:1px solid rgba(191,160,101,.42);
+  border-top:0;
+  background:rgba(34,28,33,.94);
+  color:#baa47c;
+}
+.bgmVolumePanel span{
+  font-size:8px;
+  letter-spacing:.18em;
+}
+#bgmVolume{
+  width:100%;
+  accent-color:#b9945f;
+  cursor:pointer;
+}
+@media(max-width:680px){
+  #royalBgmPlayer{
+    right:12px;
+    bottom:12px;
+    width:210px;
+  }
+  #bgmToggle{
+    grid-template-columns:34px 1fr 27px;
+    gap:9px;
+    padding:9px 10px;
+  }
+  .bgmDisc{width:31px;height:31px}
+  .bgmText strong{font-size:11px}
+  .bgmVolumePanel{padding:6px 10px}
+}
+</style>
+
 </head>
 <body>
 <header class="hero" id="home">
@@ -631,6 +745,69 @@
   window.addEventListener('resize',fitFamilyV9);
   document.addEventListener('DOMContentLoaded',fitFamilyV9);
   setTimeout(fitFamilyV9,400);
+})();
+</script>
+
+
+<audio id="siteBgm" loop preload="metadata">
+  <source src="assets/white-rose-hall.mp3" type="audio/mpeg">
+</audio>
+
+<div id="royalBgmPlayer" aria-label="배경음악 플레이어">
+  <button id="bgmToggle" type="button" aria-label="배경음악 재생">
+    <span class="bgmDisc" aria-hidden="true"></span>
+    <span class="bgmText">
+      <small>NOW PLAYING</small>
+      <strong>White Rose Hall</strong>
+    </span>
+    <span id="bgmIcon" class="bgmIcon" aria-hidden="true">▶</span>
+  </button>
+
+  <div id="bgmVolumePanel" class="bgmVolumePanel">
+    <span>VOL</span>
+    <input id="bgmVolume" type="range" min="0" max="1" step="0.01" value="0.38" aria-label="배경음악 음량">
+  </div>
+</div>
+
+
+<script id="royal-bgm-script">
+(function(){
+  const audio=document.getElementById('siteBgm');
+  const player=document.getElementById('royalBgmPlayer');
+  const toggle=document.getElementById('bgmToggle');
+  const icon=document.getElementById('bgmIcon');
+  const volume=document.getElementById('bgmVolume');
+
+  if(!audio||!toggle)return;
+
+  audio.volume=Number(volume.value);
+
+  toggle.addEventListener('click',async function(){
+    try{
+      if(audio.paused){
+        await audio.play();
+        player.classList.add('playing');
+        icon.textContent='Ⅱ';
+        toggle.setAttribute('aria-label','배경음악 일시정지');
+      }else{
+        audio.pause();
+        player.classList.remove('playing');
+        icon.textContent='▶';
+        toggle.setAttribute('aria-label','배경음악 재생');
+      }
+    }catch(e){
+      console.error('BGM 재생 실패:',e);
+    }
+  });
+
+  volume.addEventListener('input',function(){
+    audio.volume=Number(this.value);
+  });
+
+  audio.addEventListener('ended',function(){
+    player.classList.remove('playing');
+    icon.textContent='▶';
+  });
 })();
 </script>
 
