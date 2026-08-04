@@ -35,25 +35,48 @@
           <a class="btn ghost" href="#mechanics">기믹 보기</a>
         </div>
       </div>
-      <div class="hero-status">
-        <span>LOCATION</span><b>3F · PATIENT ROOM</b>
-        <span>WRISTBAND</span><b>ONLINE</b>
-      </div>
+      <aside class="vital-panel reveal" aria-label="A-013 바이탈 모니터">
+        <div class="vital-top">
+          <span>A-013 VITAL MONITOR</span>
+          <b>ONLINE</b>
+        </div>
+        <div class="vital-main">
+          <div class="vital-dial">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="dial-track" cx="60" cy="60" r="48"></circle>
+              <circle class="dial-progress" cx="60" cy="60" r="48"></circle>
+              <path class="dial-pulse" d="M18 63 H38 L44 52 L51 77 L59 42 L68 68 L75 58 H102"></path>
+            </svg>
+            <div><strong>72</strong><span>BPM</span></div>
+          </div>
+          <div class="vital-data">
+            <p><span>LOCATION</span><b>3F · PATIENT ROOM</b></p>
+            <p><span>WRISTBAND</span><b>CONNECTED</b></p>
+            <p><span>MEMORY</span><b>NO DATA</b></p>
+          </div>
+        </div>
+        <div class="vital-wave" aria-hidden="true">
+          <i style="--h:22%"></i><i style="--h:38%"></i><i style="--h:26%"></i><i style="--h:60%"></i>
+          <i style="--h:34%"></i><i style="--h:82%"></i><i style="--h:28%"></i><i style="--h:52%"></i>
+          <i style="--h:31%"></i><i style="--h:68%"></i><i style="--h:25%"></i><i style="--h:46%"></i>
+          <i style="--h:76%"></i><i style="--h:36%"></i><i style="--h:56%"></i><i style="--h:29%"></i>
+        </div>
+      </aside>
     </section>
 
     <section class="section intro reveal">
       <p class="section-no">01</p>
-      <div>
+      <div class="intro-copy">
         <p class="kicker">TEXT ESCAPE ADVENTURE</p>
-        <h2>정해진 대사를<br>따라가는 이야기가<br>아닙니다</h2>
+        <h2>정해진 대사를 따라가는 이야기가 아닙니다</h2>
+        <p class="intro-sub">직접 공간을 이동하고 눈앞의 사물을 조사하며 상황에 따라 달라지는 사건을 통과합니다</p>
       </div>
-      <p>직접 공간을 이동하고<br>눈앞의 사물을 조사하며<br>상황에 따라 달라지는 사건을 통과합니다</p>
     </section>
 
     <section class="section" id="mechanics">
       <div class="section-head reveal">
         <p class="kicker">CORE MECHANICS</p>
-        <h2>다섯 가지<br>핵심 기믹</h2>
+        <h2>다섯 가지 핵심 기믹</h2>
       </div>
       <div class="mechanic-grid">
         <article class="mechanic reveal"><span>01</span><h3>자유 탐색</h3><p>원하는 순서대로 장소를 이동하며 단서를 수집합니다.</p></article>
@@ -110,12 +133,22 @@
         <p class="kicker">CAST</p>
         <h2>등장인물</h2>
       </div>
-      <div class="cast-grid">
-        <figure class="cast-card reveal"><img src="assets/images/cast_namseonghan.png" alt="남성한"><figcaption>남성한</figcaption></figure>
-        <figure class="cast-card reveal"><img src="assets/images/cast_pyojihae.png" alt="표지해"><figcaption>표지해</figcaption></figure>
-        <figure class="cast-card reveal"><img src="assets/images/cast_songsuli.png" alt="송설이"><figcaption>송설이</figcaption></figure>
-        <figure class="cast-card reveal"><img src="assets/images/cast_a018.png" alt="A-018"><figcaption>A-018</figcaption></figure>
-        <figure class="cast-card reveal"><img src="assets/images/cast_a022.png" alt="A-022"><figcaption>A-022</figcaption></figure>
+      <div class="cast-groups">
+        <div class="cast-group cast-staff">
+          <p class="cast-label">MEDICAL STAFF</p>
+          <div class="cast-grid staff-grid">
+            <figure class="cast-card reveal"><img src="assets/images/cast_namseonghan.png" alt="남성한"><figcaption>남성한</figcaption></figure>
+            <figure class="cast-card reveal"><img src="assets/images/cast_pyojihae.png" alt="표지해"><figcaption>표지해</figcaption></figure>
+            <figure class="cast-card reveal"><img src="assets/images/cast_songsuli.png" alt="송설이"><figcaption>송설이</figcaption></figure>
+          </div>
+        </div>
+        <div class="cast-group cast-patients">
+          <p class="cast-label">PATIENTS</p>
+          <div class="cast-grid patient-grid">
+            <figure class="cast-card reveal"><img src="assets/images/cast_a018.png" alt="A-018"><figcaption>A-018</figcaption></figure>
+            <figure class="cast-card reveal"><img src="assets/images/cast_a022.png" alt="A-022"><figcaption>A-022</figcaption></figure>
+          </div>
+        </div>
       </div>
     </section>
 

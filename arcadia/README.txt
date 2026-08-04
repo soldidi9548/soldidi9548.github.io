@@ -1,7 +1,13 @@
-GitHub Pages 업로드 방법
+ARCADIA GitHub Pages 업로드용 v4
 
-1. 이 ZIP의 내용물을 전부 압축 해제합니다.
-2. GitHub 저장소의 최상위(root)에 index.html, style.css, script.js, assets 폴더를 그대로 업로드합니다.
-3. Settings → Pages → Deploy from a branch → main / root 선택 후 저장합니다.
-4. 모든 PLAY 버튼은 아래 모아리 링크에 연결되어 있습니다.
-https://moari.chat/characters/-id-?id=019fb80a-9225-793d-8986-6aaf1a3e66f5
+1. ZIP 압축을 풉니다.
+2. 폴더 안의 index.html, style.css, script.js, assets 폴더를 GitHub 저장소 최상단에 업로드합니다.
+3. GitHub Settings → Pages → Deploy from a branch → main / root를 선택합니다.
+
+v4 변경:
+- 시작 화면 바이탈 모니터 복원
+- 인트로 제목/소제목 2줄 구조
+- 핵심 기믹 제목 한 줄
+- 시설 이미지 영역을 화면 폭에 맞게 확장
+- 이동 안내도 SVG 전면 재작성
+- 캐스트 의료진 3명 / 환자 2명 분리 배치
