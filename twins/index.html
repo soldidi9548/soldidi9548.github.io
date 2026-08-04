@@ -103,6 +103,16 @@
   .bannerInner{padding-bottom:34px!important;}
 }
 
+
+/* mobile modal centering fix */
+html,body{max-width:100%;overflow-x:hidden}
+.modal{left:0;right:0;width:100%;box-sizing:border-box}
+.modalBox{box-sizing:border-box;margin-inline:auto}
+@media(max-width:680px){
+  .modal{padding:12px;place-items:center}
+  .modalBox{width:100%;max-width:560px;margin:0 auto;max-height:calc(100svh - 24px);border-radius:22px}
+  .tabs{width:100%;max-width:100%;box-sizing:border-box;overscroll-behavior-x:contain}
+}
 </style>
 </head>
 <body>
