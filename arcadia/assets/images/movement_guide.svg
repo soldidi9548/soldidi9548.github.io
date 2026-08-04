@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+<style>
+  .bg{fill:#0a120f}.grid{stroke:#c7e7b4;stroke-opacity:.035;stroke-width:1}
+  .line{stroke:#61736a;stroke-width:2;fill:none}
+  .box{fill:#101916;stroke:#61736a;stroke-width:1.5;rx:7}
+  .hub{fill:#e7eee9;stroke:#e7eee9}.hubtext{fill:#08100c}
+  .label{fill:#f0f6f2;font:700 20px 'Noto Sans KR',Arial,sans-serif;text-anchor:middle;dominant-baseline:middle}
+  .floor{fill:#b9daa7;font:700 28px Georgia,serif;text-anchor:middle;dominant-baseline:middle}
+  .small{fill:#81938a;font:12px monospace;letter-spacing:2px;text-anchor:middle}
+  .danger{fill:#160d0f;stroke:#91464b;stroke-dasharray:7 5}.dangertext{fill:#da787d}
+</style>
+<rect class="bg" width="1200" height="900"/>
+<g opacity=".55">
+  <path class="grid" d="M0 50H1200M0 100H1200M0 150H1200M0 200H1200M0 250H1200M0 300H1200M0 350H1200M0 400H1200M0 450H1200M0 500H1200M0 550H1200M0 600H1200M0 650H1200M0 700H1200M0 750H1200M0 800H1200M0 850H1200"/>
+  <path class="grid" d="M50 0V900M100 0V900M150 0V900M200 0V900M250 0V900M300 0V900M350 0V900M400 0V900M450 0V900M500 0V900M550 0V900M600 0V900M650 0V900M700 0V900M750 0V900M800 0V900M850 0V900M900 0V900M950 0V900M1000 0V900M1050 0V900M1100 0V900M1150 0V900"/>
+</g>
+<text x="600" y="35" class="small">FACILITY MOVEMENT GUIDE</text>
+<text x="600" y="58" class="small" style="font-size:10px;letter-spacing:1px">복도와 계단을 따라 연결된 공간만 이동할 수 있습니다</text>
+
+<!-- vertical stair shaft -->
+<path class="line" d="M210 155V675"/>
+
+<!-- 3F -->
+<text x="62" y="185" class="floor">3F</text>
+<rect x="130" y="145" width="160" height="80" class="box"/><text x="210" y="185" class="label">3층 계단</text>
+<path class="line" d="M290 185H410"/>
+<rect x="410" y="145" width="190" height="80" class="box hub"/><text x="505" y="185" class="label hubtext">3층 복도</text>
+<path class="line" d="M600 185H720M720 185L805 125M720 185L805 185M720 185L805 245"/>
+<rect x="805" y="90" width="250" height="70" class="box"/><text x="930" y="125" class="label">병실</text>
+<rect x="805" y="150" width="250" height="70" class="box"/><text x="930" y="185" class="label">상담실</text>
+<rect x="805" y="210" width="250" height="70" class="box"/><text x="930" y="245" class="label">휴게실</text>
+
+<!-- 2F -->
+<text x="62" y="410" class="floor">2F</text>
+<rect x="130" y="370" width="160" height="80" class="box"/><text x="210" y="410" class="label">2층 계단</text>
+<path class="line" d="M290 410H410"/>
+<rect x="410" y="370" width="190" height="80" class="box hub"/><text x="505" y="410" class="label hubtext">2층 복도</text>
+<path class="line" d="M600 410H720M720 410L805 320M720 410L805 380M720 410L805 440M720 410L805 500"/>
+<rect x="805" y="285" width="250" height="70" class="box"/><text x="930" y="320" class="label">면담실</text>
+<rect x="805" y="345" width="250" height="70" class="box"/><text x="930" y="380" class="label">약품실</text>
+<rect x="805" y="405" width="250" height="70" class="box"/><text x="930" y="440" class="label">검사실</text>
+<rect x="805" y="465" width="250" height="70" class="box"/><text x="930" y="500" class="label">격리실</text>
+
+<!-- 1F -->
+<text x="62" y="650" class="floor">1F</text>
+<rect x="130" y="610" width="160" height="80" class="box"/><text x="210" y="650" class="label">1층 계단</text>
+<path class="line" d="M290 650H380"/>
+<rect x="380" y="555" width="190" height="76" class="box hub"/><text x="475" y="593" class="label hubtext">로비</text>
+<rect x="675" y="555" width="190" height="76" class="box"/><text x="770" y="593" class="label">원무과</text>
+<rect x="380" y="690" width="190" height="76" class="box"/><text x="475" y="728" class="label">안내 데스크</text>
+<rect x="675" y="690" width="190" height="76" class="box"/><text x="770" y="728" class="label">현관</text>
+<path class="line" d="M570 593H675M475 631V690M770 631V690M570 728H675M570 593L675 728M675 593L570 728"/>
+
+<!-- Basement -->
+<path class="line" d="M210 690V820"/>
+<rect x="130" y="790" width="160" height="72" class="box danger"/><text x="210" y="826" class="label dangertext">지하 계단</text>
+<path class="line" d="M290 826H410"/>
+<rect x="410" y="790" width="190" height="72" class="box"/><text x="505" y="826" class="label">B1–B3</text>
+<text x="760" y="833" class="small">RESTRICTED AREA</text>
+</svg>
