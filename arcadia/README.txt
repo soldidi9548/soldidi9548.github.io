@@ -1,10 +1,9 @@
-ARCADIA GitHub Pages v10
+ARCADIA GitHub Pages 업로드용 v11
 
-이번 버전은 HTML 클래스와 CSS 클래스가 서로 다르던 오류를 전부 정리했습니다.
-- style-v10.css / script-v10.js / movement_guide_v10.svg 사용
-- 시설 이미지 그리드 빈 여백 제거
-- 층별 안내도 오른쪽 카드 간격 확대
-- 복도/로비 글자 대비 수정
-- 바이탈 패널 확대
+수정 사항:
+- 장비가 있는 이미지의 표기를 '검사실 / EXAMINATION'으로 변경
+- 약병이 진열된 이미지의 표기를 '약품실 / PHARMACY'로 변경
+- CSS와 JS 파일명을 v11로 변경해 브라우저 캐시 방지
 
-GitHub 저장소 기존 파일을 모두 삭제한 뒤 이 ZIP의 파일 전체를 업로드하세요.
+기존 GitHub 저장소 파일을 모두 삭제한 뒤
+이 ZIP 안의 파일 전체를 업로드하세요.
