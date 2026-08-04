@@ -1,19 +1,10 @@
-ARCADIA GitHub Pages 업로드용 v9
+ARCADIA GitHub Pages v10
 
-이 버전은 기존 CSS 덮어쓰기 구조를 버리고 index.html / style-v9.css / script-v9.js를 처음부터 다시 구성했습니다
+이번 버전은 HTML 클래스와 CSS 클래스가 서로 다르던 오류를 전부 정리했습니다.
+- style-v10.css / script-v10.js / movement_guide_v10.svg 사용
+- 시설 이미지 그리드 빈 여백 제거
+- 층별 안내도 오른쪽 카드 간격 확대
+- 복도/로비 글자 대비 수정
+- 바이탈 패널 확대
 
-적용 내용
-- 시작 화면 대형 바이탈 모니터와 ECG 파형
-- 제목 크기와 줄바꿈 전면 정리
-- 핵심 기믹 5개 동일 높이 구성
-- 공간 이미지 12컬럼 재배치
-- 층별 이동 안내도 SVG 전면 재제작
-- 오른쪽 공간 박스 폭과 간격 확대
-- 1층 이동 구조를 기준 이미지대로 반영
-- 의료진 3명 아래 환자 2명 배치
-- GitHub Pages 캐시 방지를 위해 v9 파일명 사용
-
-업로드 방법
-1 기존 GitHub 저장소 파일을 전부 삭제합니다
-2 ZIP의 index.html style-v9.css script-v9.js assets 폴더를 저장소 최상단에 업로드합니다
-3 Settings > Pages > Deploy from a branch > main / root를 선택합니다
+GitHub 저장소 기존 파일을 모두 삭제한 뒤 이 ZIP의 파일 전체를 업로드하세요.
