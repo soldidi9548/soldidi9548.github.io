@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>soldidi9548</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="login-screen" class="screen active">
+    <div class="login-window">
+      <div class="titlebar"><span>soldidi9548 LOGIN</span><span>□ ×</span></div>
+      <div class="login-body">
+        <div class="login-logo">soldidi9548</div>
+        <label>ID<input id="login-id" type="text" placeholder="anything" /></label>
+        <label>PASSWORD<input id="login-pw" type="password" placeholder="anything" /></label>
+        <button id="login-btn" class="square-btn">[ LOGIN ]</button>
+        <div id="login-status" class="status-line">Ready.</div>
+      </div>
+    </div>
+  </div>
+
+  <main id="desktop" class="screen" aria-label="soldidi9548 desktop">
+    <div id="wallpaper-morning" class="wallpaper morning"></div>
+    <div id="wallpaper-night" class="wallpaper night"></div>
+    <div id="particles" aria-hidden="true"></div>
+
+    <section class="desktop-icons" aria-label="desktop icons">
+      <button class="desktop-icon icon-about" data-open="about">
+        <svg class="pixel-icon" viewBox="0 0 48 48" aria-hidden="true" shape-rendering="crispEdges"><path class="outline" d="M9 3h25v5h5v37H9z"/><path fill="#fff" d="M13 7h17v6h5v28H13z"/><path fill="#9b72ff" d="M30 7h4v5h-4z"/><path fill="#ff5fa2" d="M17 18h14v3H17zm0 7h14v3H17zm0 7h11v3H17z"/><path fill="#65e4ff" d="M13 7h17v3H13z"/></svg>
+        <b>ABOUT</b>
+      </button>
+      <button class="desktop-icon icon-gallery" data-open="gallery">
+        <svg class="pixel-icon" viewBox="0 0 48 48" aria-hidden="true" shape-rendering="crispEdges"><path class="outline" d="M4 7h40v29H29v5h7v4H12v-4h7v-5H4z"/><path fill="#65e4ff" d="M8 11h32v21H8z"/><path fill="#ff5fa2" d="M11 25l7-7 6 6 5-5 8 10H11z"/><path fill="#ffe04a" d="M31 14h5v5h-5z"/><path fill="#9b72ff" d="M19 36h10v5H19z"/></svg>
+        <b>GALLERY</b>
+      </button>
+      <button class="desktop-icon icon-diary" data-open="diary">
+        <svg class="pixel-icon" viewBox="0 0 48 48" aria-hidden="true" shape-rendering="crispEdges"><path class="outline" d="M8 4h32v40H8z"/><path fill="#ff5fa2" d="M12 8h24v32H12z"/><path fill="#9b72ff" d="M12 8h5v32h-5z"/><path fill="#fff" d="M20 13h12v3H20zm0 7h12v3H20zm0 7h8v3h-8z"/><path fill="#ffe04a" d="M31 34h3v6h-3z"/></svg>
+        <b>DIARY</b>
+      </button>
+      <button class="desktop-icon icon-ott" data-open="ott">
+        <svg class="pixel-icon" viewBox="0 0 48 48" aria-hidden="true" shape-rendering="crispEdges"><path class="outline" d="M5 8h38v31H28v4h8v3H12v-3h8v-4H5z"/><path fill="#9b72ff" d="M9 12h30v23H9z"/><path fill="#ff5fa2" d="M19 17l12 7-12 7z"/><path fill="#65e4ff" d="M9 12h30v3H9z"/></svg>
+        <b>OTT</b>
+      </button>
+      <button class="desktop-icon icon-messenger" data-open="messenger">
+        <svg class="pixel-icon" viewBox="0 0 48 48" aria-hidden="true" shape-rendering="crispEdges"><path class="outline" d="M5 7h38v28H26l-9 8v-8H5z"/><path fill="#67f0c2" d="M9 11h30v20H23l-3 3v-3H9z"/><path fill="#ff5fa2" d="M14 18h4v4h-4zm8 0h4v4h-4zm8 0h4v4h-4z"/></svg>
+        <b>MESSENGER</b>
+      </button>
+      <button class="desktop-icon icon-guestbook" data-open="guestbook">
+        <svg class="pixel-icon" viewBox="0 0 48 48" aria-hidden="true" shape-rendering="crispEdges"><path class="outline" d="M4 6h18l2 3 2-3h18v36H27l-3 2-3-2H4z"/><path fill="#9b72ff" d="M8 10h13v27H8zm19 0h13v27H27z"/><path fill="#fff" d="M11 15h7v3h-7zm0 7h7v3h-7zm18-7h8v3h-8z"/><path fill="#ff5fa2" d="M30 23h3v-3h4v3h3v4l-5 5-5-5z"/></svg>
+        <b>GUESTBOOK</b>
+      </button>
+      <button class="desktop-icon icon-trash" data-open="trash">
+        <svg class="pixel-icon" viewBox="0 0 48 48" aria-hidden="true" shape-rendering="crispEdges"><path class="outline" d="M14 4h20v5h8v5h-4v29H10V14H6V9h8z"/><path fill="#65e4ff" d="M14 14h20v25H14z"/><path fill="#fff" d="M18 18h3v16h-3zm9 0h3v16h-3z"/><path fill="#ff5fa2" d="M10 9h28v5H10z"/><path fill="#9b72ff" d="M18 5h12v4H18z"/></svg>
+        <b>TRASH</b>
+      </button>
+    </section>
+
+    <section id="windows"></section>
+
+    <footer class="taskbar">
+      <button id="start-btn" class="task-btn">START</button>
+      <div class="search-wrap"><input id="site-search" type="search" placeholder="Search soldidi9548..." /><button id="search-btn">GO</button></div>
+      <div id="task-items" class="task-items"></div>
+      <div class="clock"><span id="clock-time"></span><span id="clock-date"></span></div>
+    </footer>
+  </main>
+
+  <div id="image-viewer" class="modal" aria-hidden="true">
+    <button class="modal-close" aria-label="닫기">×</button>
+    <button class="viewer-prev" aria-label="이전">◀</button>
+    <figure><img id="viewer-img" alt="gallery image" /><figcaption id="viewer-caption"></figcaption></figure>
+    <button class="viewer-next" aria-label="다음">▶</button>
+  </div>
+
+  <template id="window-template">
+    <article class="app-window">
+      <header class="window-titlebar">
+        <span class="window-title"></span>
+        <div class="window-controls"><button data-act="min">_</button><button data-act="max">□</button><button data-act="close">×</button></div>
+      </header>
+      <div class="window-content"></div>
+    </article>
+  </template>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
