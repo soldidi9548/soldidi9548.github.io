@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+<style>
+.bg{fill:#09110e}.grid{stroke:#c7e7b4;stroke-opacity:.035;stroke-width:1}.line{stroke:#6c8176;stroke-width:2.2;fill:none}.box{fill:#101916;stroke:#6c8176;stroke-width:1.7;rx:9}.hub{fill:#dce8df;stroke:#dce8df}.label{fill:#f2f7f3;font:700 22px 'Noto Sans KR',Arial,sans-serif;text-anchor:middle;dominant-baseline:middle}.hubtext{fill:#07100b}.floor{fill:#b9daa7;font:700 32px Georgia,serif;text-anchor:middle;dominant-baseline:middle}.small{fill:#7f9188;font:12px monospace;letter-spacing:2px;text-anchor:middle}.danger{fill:#160d0f;stroke:#91464b;stroke-dasharray:8 6}.dangertext{fill:#df7f84}
+</style>
+<rect class="bg" width="1600" height="980"/>
+<g opacity=".52">
+<path class="grid" d="M0 50H1600M0 100H1600M0 150H1600M0 200H1600M0 250H1600M0 300H1600M0 350H1600M0 400H1600M0 450H1600M0 500H1600M0 550H1600M0 600H1600M0 650H1600M0 700H1600M0 750H1600M0 800H1600M0 850H1600M0 900H1600M0 950H1600"/>
+<path class="grid" d="M50 0V980M100 0V980M150 0V980M200 0V980M250 0V980M300 0V980M350 0V980M400 0V980M450 0V980M500 0V980M550 0V980M600 0V980M650 0V980M700 0V980M750 0V980M800 0V980M850 0V980M900 0V980M950 0V980M1000 0V980M1050 0V980M1100 0V980M1150 0V980M1200 0V980M1250 0V980M1300 0V980M1350 0V980M1400 0V980M1450 0V980M1500 0V980M1550 0V980"/>
+</g>
+<text x="800" y="34" class="small">FACILITY MOVEMENT GUIDE</text>
+<text x="800" y="58" class="small" style="font-size:10px;letter-spacing:1px">계단은 바로 위·아래층 계단과 연결되며, 각 층의 개별 공간은 해당 층 복도를 거쳐 이동합니다</text>
+
+<!-- stair shaft -->
+<path class="line" d="M230 165V760"/>
+
+<!-- 3F -->
+<text x="72" y="190" class="floor">3F</text>
+<rect x="140" y="145" width="180" height="90" class="box"/><text x="230" y="190" class="label">3층 계단</text>
+<path class="line" d="M320 190H510"/>
+<rect x="510" y="145" width="230" height="90" class="box hub"/><text x="625" y="190" class="label hubtext">3층 복도</text>
+<path class="line" d="M740 190H1000M1000 190L1130 112M1000 190H1130M1000 190L1130 268"/>
+<rect x="1130" y="70" width="390" height="84" class="box"/><text x="1325" y="112" class="label">병실</text>
+<rect x="1130" y="148" width="390" height="84" class="box"/><text x="1325" y="190" class="label">상담실</text>
+<rect x="1130" y="226" width="390" height="84" class="box"/><text x="1325" y="268" class="label">휴게실</text>
+
+<!-- 2F -->
+<text x="72" y="445" class="floor">2F</text>
+<rect x="140" y="400" width="180" height="90" class="box"/><text x="230" y="445" class="label">2층 계단</text>
+<path class="line" d="M320 445H510"/>
+<rect x="510" y="400" width="230" height="90" class="box hub"/><text x="625" y="445" class="label hubtext">2층 복도</text>
+<path class="line" d="M740 445H1000M1000 445L1130 342M1000 445L1130 410M1000 445L1130 478M1000 445L1130 546"/>
+<rect x="1130" y="300" width="390" height="84" class="box"/><text x="1325" y="342" class="label">면담실</text>
+<rect x="1130" y="368" width="390" height="84" class="box"/><text x="1325" y="410" class="label">약품실</text>
+<rect x="1130" y="436" width="390" height="84" class="box"/><text x="1325" y="478" class="label">검사실</text>
+<rect x="1130" y="504" width="390" height="84" class="box"/><text x="1325" y="546" class="label">격리실</text>
+
+<!-- 1F -->
+<text x="72" y="720" class="floor">1F</text>
+<rect x="140" y="675" width="180" height="90" class="box"/><text x="230" y="720" class="label">1층 계단</text>
+<path class="line" d="M320 720H470V650H555"/>
+<rect x="555" y="605" width="250" height="90" class="box hub"/><text x="680" y="650" class="label hubtext">로비</text>
+<rect x="1000" y="605" width="250" height="90" class="box"/><text x="1125" y="650" class="label">원무과</text>
+<rect x="555" y="770" width="250" height="90" class="box"/><text x="680" y="815" class="label">안내 데스크</text>
+<rect x="1000" y="770" width="250" height="90" class="box"/><text x="1125" y="815" class="label">현관</text>
+<path class="line" d="M805 650H1000M680 695V770M1125 695V770M805 815H1000M805 650L1000 815M1000 650L805 815"/>
+
+<!-- basement continuation -->
+<path class="line" d="M230 765V900"/>
+<rect x="140" y="865" width="180" height="82" class="box danger"/><text x="230" y="906" class="label dangertext">XX</text>
+<text x="470" y="913" class="small">CONTINUES BELOW</text>
+</svg>
