@@ -302,8 +302,8 @@ body.modal-open{
   <div class="profileGrid">
     <div class="profileItem"><article class="profileCard" data-modal="seorin" tabindex="0" role="button" aria-label="한서린 프로필 열기"><div class="profileHint">＋</div><img src="assets/hanseorin.png" alt="한서린"><div class="profileMeta"><small>MOTHER · HUMAN</small><h3>한서린</h3><p>“돌아올 곳을 마련해 주는 게 더 확실하니까.”</p></div></article></div>
     <div class="profileItem"><article class="profileCard" data-modal="eren" tabindex="0" role="button" aria-label="에른 프로필 열기"><div class="profileHint">＋</div><img src="assets/eren.png" alt="에른"><div class="profileMeta"><small>FATHER · MERFOLK</small><h3>에른</h3><p>“어느 세계에 있든 서로를 잊지 않으면 그곳도 집이란다.”</p></div></article></div>
-    <div class="profileItem"><article class="profileCard" data-modal="yumyeong" tabindex="0" role="button" aria-label="한유명 프로필 열기"><div class="profileHint">＋</div><img src="assets/hanyoomyeong-human.png" alt="한유명"><div class="profileMeta"><small>AREN · TWIN BROTHER</small><h3>한유명</h3><p>“바다도 좋지만, 여기도 제법 재밌잖아.”</p></div></article><a class="cardMoari" href="#" data-placeholder="true">한유명과 이야기 시작하기 ↗</a></div>
-    <div class="profileItem"><article class="profileCard" data-modal="yuyeong" tabindex="0" role="button" aria-label="한유영 프로필 열기"><div class="profileHint">＋</div><img src="assets/hanyooyoung-human.png" alt="한유영"><div class="profileMeta"><small>RUEN · TWIN BROTHER</small><h3>한유영</h3><p>“기대하지 않는 것과 외면하는 건 다르니까.”</p></div></article><a class="cardMoari" href="#" data-placeholder="true">한유영과 이야기 시작하기 ↗</a></div>
+    <div class="profileItem"><article class="profileCard" data-modal="yumyeong" tabindex="0" role="button" aria-label="한유명 프로필 열기"><div class="profileHint">＋</div><img src="assets/hanyoomyeong-human.png" alt="한유명"><div class="profileMeta"><small>AREN · TWIN BROTHER</small><h3>한유명</h3><p>“바다도 좋지만, 여기도 제법 재밌잖아.”</p></div></article><a class="cardMoari" href="https://moari.chat/characters/-id-?id=019fb380-a700-78a4-bd5c-25bd8a4c8d2e" target="_blank" rel="noopener noreferrer">한유명과 이야기 시작하기 ↗</a></div>
+    <div class="profileItem"><article class="profileCard" data-modal="yuyeong" tabindex="0" role="button" aria-label="한유영 프로필 열기"><div class="profileHint">＋</div><img src="assets/hanyooyoung-human.png" alt="한유영"><div class="profileMeta"><small>RUEN · TWIN BROTHER</small><h3>한유영</h3><p>“기대하지 않는 것과 외면하는 건 다르니까.”</p></div></article><a class="cardMoari" href="https://moari.chat/characters/-id-?id=019fd0bb-dd1a-7393-8177-5ecb4554919c" target="_blank" rel="noopener noreferrer">한유영과 이야기 시작하기 ↗</a></div>
   </div>
 </section>
 <section class="view" id="places">
@@ -352,7 +352,6 @@ function closeProfile(){
   modal.classList.remove('open');
   unlockPageScroll();
 }
-document.querySelectorAll('.cardMoari[data-placeholder]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();alert('모아리 링크가 준비되면 이 버튼의 href 주소만 교체하면 됩니다.')}));
 document.querySelectorAll('.profileCard[data-modal]').forEach(card=>{card.addEventListener('click',()=>openProfile(card.dataset.modal));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openProfile(card.dataset.modal)}})});
 document.querySelector('.modalClose').onclick=closeProfile;
 modal.onclick=e=>{if(e.target===modal)closeProfile()};
