@@ -108,9 +108,9 @@ img{max-width:100%}
 .notice-top h3{margin:0;font-family:"Noto Sans JP",sans-serif;font-size:22px;line-height:1.45}
 .ko-sub{margin-top:7px;color:var(--muted);font-size:12px}
 .notice-body{padding:34px 38px 38px}
-.notice-body p{margin:0 0 18px;overflow-wrap:anywhere}
+.notice-body p{margin:0 0 18px;}
 .jp{font-family:"Noto Sans JP",sans-serif;font-size:14px;line-height:2}
-.translation{color:var(--muted);font-size:12px;line-height:1.85;overflow-wrap:anywhere}
+.translation{color:var(--muted);font-size:12px;line-height:1.85;}
 .notice-list{margin:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .notice-row{display:grid;grid-template-columns:180px minmax(0,1fr);gap:20px;padding:16px 4px;border-bottom:1px dashed var(--line);align-items:start}
 .notice-row:last-child{border-bottom:0}
@@ -140,7 +140,7 @@ img{max-width:100%}
 .qa-list{display:grid;gap:14px}
 .qa-list details{border:1px solid var(--line);background:#fff}
 .qa-list summary{cursor:pointer;padding:18px 20px;font-weight:800;font-size:14px}
-.qa-answer{padding:0 20px 20px;color:var(--muted);font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.qa-answer{padding:0 20px 20px;color:var(--muted);font-size:13px;line-height:1.8;}
 .qa-contact-btn{display:flex;align-items:center;justify-content:space-between;border:1px dashed var(--deep);padding:16px 18px;color:var(--deep);font-size:12px;font-weight:900;background:#f8fcff}
 
 /* ---------- uniform ---------- */
@@ -151,7 +151,7 @@ img{max-width:100%}
 .prompt-card{min-width:0}
 .prompt-card h3{margin:0 0 10px;font-size:15px}
 .prompt-code-wrap{position:relative;height:100%}
-.prompt-box{min-height:190px;height:100%;padding:50px 18px 18px;background:#fff;border:1px solid var(--line);box-shadow:var(--card-shadow);color:#465b6c;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:12px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
+.prompt-box{min-height:190px;height:100%;padding:50px 18px 18px;background:#fff;border:1px solid var(--line);box-shadow:var(--card-shadow);color:#465b6c;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:12px;line-height:1.8;white-space:pre-wrap;;word-break:break-word}
 .copy-prompt-btn{position:absolute;top:10px;right:10px;z-index:2;border:1px solid var(--line);background:#f4f9fc;color:var(--navy);padding:7px 11px;font-size:11px;font-weight:900;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .copy-prompt-btn:hover{background:#e7f3fa}
 .copy-prompt-btn.copied{background:var(--navy);color:#fff}
@@ -229,8 +229,11 @@ img{max-width:100%}
 .student-name{margin-top:8px;min-width:0;font-family:"Noto Sans JP",sans-serif;font-size:25px;line-height:1.22;font-weight:900;letter-spacing:-.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .student-name-ko{margin-top:5px;min-width:0;color:var(--muted);font-size:12px;line-height:1.45;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .student-quote{margin-top:16px;padding-top:13px;border-top:1px solid var(--line);min-width:0;overflow:hidden}
-.quote-jp,.quote-ko{min-width:0;max-width:100%;overflow:hidden;overflow-wrap:anywhere}
+.quote-jp,.quote-ko{min-width:0;max-width:100%;overflow:hidden;}
 .quote-jp{
+  word-break:keep-all;
+  line-break:strict;
+
   font-family:"Noto Sans JP",sans-serif;
   font-size:13px;
   line-height:1.65;
@@ -257,18 +260,21 @@ img{max-width:100%}
 .modal.open{display:flex}
 .modal-panel{position:relative;width:min(920px,100%);max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);overflow:auto;background:#fff;border:1px solid rgba(255,255,255,.55);box-shadow:0 30px 80px rgba(8,28,43,.35);-webkit-overflow-scrolling:touch}
 .modal-close{position:absolute;right:14px;top:14px;z-index:5;width:42px;height:42px;border:0;background:rgba(255,255,255,.94);color:var(--ink);font-size:28px;line-height:1;cursor:pointer;box-shadow:0 4px 18px rgba(20,55,78,.18);-webkit-appearance:none;appearance:none}
-.modal-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);min-height:600px}
+.modal-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);min-height:600px}
 .modal-image{position:relative;min-width:0;min-height:600px;overflow:hidden;background:#eaf5fb}
-.modal-image img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 20%}
-.modal-content{min-width:0;padding:54px 42px 40px;overflow-wrap:anywhere}
-#modalName{margin:11px 0 0;font-family:"Noto Sans JP",sans-serif;font-size:34px;line-height:1.25;font-weight:900;letter-spacing:-.03em;overflow-wrap:anywhere}
+.modal-image img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:contain;object-position:center center}
+.modal-content{min-width:0;padding:54px 42px 40px;}
+#modalName{margin:11px 0 0;font-family:"Noto Sans JP",sans-serif;font-size:34px;line-height:1.25;font-weight:900;letter-spacing:-.03em;}
 .modal-name-ko{margin-top:5px;color:var(--muted);font-size:13px;line-height:1.6;font-weight:600}
 .profile-table{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px 14px;margin-top:30px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px;line-height:1.65}
 .profile-table b{color:var(--deep);font-size:11px}
-.profile-table span{min-width:0;overflow-wrap:anywhere}
+.profile-table span{min-width:0;}
 .modal-quote{margin-top:26px;padding:20px 22px;background:var(--soft);border-left:3px solid var(--sky)}
 .modal-quote .quote-jp,.modal-quote .quote-ko{display:block!important;overflow:visible!important;-webkit-line-clamp:unset!important;line-clamp:unset!important}
-.modal-quote .quote-jp{font-size:15px;line-height:1.8}
+.modal-quote .quote-jp{
+  word-break:keep-all;
+  line-break:strict;
+font-size:15px;line-height:1.8}
 .modal-quote .quote-ko{font-size:12px;line-height:1.7;margin-top:8px}
 
 /* ---------- footer / charms ---------- */
@@ -325,7 +331,7 @@ img{max-width:100%}
   .content-wrap{width:calc(100% - 24px);padding:56px 0 72px}
   .page-title{margin-bottom:28px}
   .page-title h2{font-size:31px}
-  .page-title p{font-size:12px;line-height:1.7;overflow-wrap:anywhere}
+  .page-title p{font-size:12px;line-height:1.7;}
 
   .notice-top{padding:22px 20px 18px}
   .notice-top h3{font-size:18px}
@@ -340,7 +346,7 @@ img{max-width:100%}
   .operation-intro h3{font-size:21px}
   .rule-lanes{padding:0 20px}
   .rule-lane{padding:21px 0}
-  .operation-note{padding:18px 20px 20px;overflow-wrap:anywhere}
+  .operation-note{padding:18px 20px 20px;}
   .embedded-qa{margin-top:72px}
 
   /* Mobile student roster: always two columns. */
@@ -366,7 +372,10 @@ img{max-width:100%}
   .student-name{margin-top:6px;font-size:18px;line-height:1.18}
   .student-name-ko{margin-top:4px;font-size:9px;line-height:1.35}
   .student-quote{margin-top:10px;padding-top:9px}
-  .quote-jp{font-size:10.5px;line-height:1.5;-webkit-line-clamp:2;line-clamp:2}
+  .quote-jp{
+  word-break:keep-all;
+  line-break:strict;
+font-size:10.5px;line-height:1.5;-webkit-line-clamp:2;line-clamp:2}
   .quote-ko{margin-top:4px;font-size:9px;line-height:1.45;-webkit-line-clamp:2;line-clamp:2}
 
   /* Mobile modal keeps the desktop composition: image left, details right. */
@@ -401,7 +410,10 @@ img{max-width:100%}
   }
   .profile-table b{font-size:9px}
   .modal-quote{margin-top:15px;padding:12px 12px;border-left-width:2px}
-  .modal-quote .quote-jp{font-size:11px;line-height:1.55}
+  .modal-quote .quote-jp{
+  word-break:keep-all;
+  line-break:strict;
+font-size:11px;line-height:1.55}
   .modal-quote .quote-ko{font-size:9.5px;line-height:1.5;margin-top:5px}
   .modal-close{right:8px;top:8px;width:34px;height:34px;font-size:24px}
 
@@ -418,7 +430,10 @@ img{max-width:100%}
   .student-body{height:178px;flex-basis:178px;padding:11px 10px 10px}
   .student-name{font-size:16px}
   .student-name-ko{font-size:8.4px}
-  .quote-jp{font-size:9.8px}
+  .quote-jp{
+  word-break:keep-all;
+  line-break:strict;
+font-size:9.8px}
   .quote-ko{font-size:8.5px}
   .modal-grid{grid-template-columns:minmax(0,40%) minmax(0,60%);min-height:420px}
   .modal-image{min-height:420px}
