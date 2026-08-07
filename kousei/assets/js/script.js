@@ -4,7 +4,7 @@ const pages=[...document.querySelectorAll('.page')];
 function showPage(name){
   pages.forEach(page=>page.classList.toggle('active',page.id===`page-${name}`));
   tabButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.page===name));
-  window.scrollTo({top:0,behavior:'smooth'});
+  try{window.scrollTo({top:0,behavior:'smooth'});}catch(_){window.scrollTo(0,0);}
   history.replaceState(null,'',`#${name}`);
   setTimeout(setupReveal,80);
 }
@@ -27,9 +27,9 @@ function openModal(card){
   const popupImage=card.dataset.popup;
   const modalImage=document.getElementById('modalImage');
   if(popupImage){
-    modalImage.innerHTML=`<img src="${popupImage}" alt="${card.dataset.name}">`;
+    modalImage.replaceChildren(); const img=document.createElement('img'); img.src=popupImage; img.alt=card.dataset.name||''; img.decoding='async'; modalImage.appendChild(img);
   }else{
-    modalImage.innerHTML=card.querySelector('.student-image').innerHTML;
+    modalImage.replaceChildren(); const source=card.querySelector('.student-image img'); if(source){const img=source.cloneNode(true); modalImage.appendChild(img);}
   }
   modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');closeBtn.focus();
 }
