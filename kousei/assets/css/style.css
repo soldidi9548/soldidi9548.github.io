@@ -176,7 +176,7 @@ img{max-width:100%}
 /* One card component everywhere */
 .student-card{
   width:100%;
-  height:640px;
+  height:600px;
   min-width:0;
   display:flex;
   flex-direction:column;
@@ -199,8 +199,8 @@ img{max-width:100%}
 .student-image{
   position:relative;
   width:100%;
-  height:390px;
-  flex:0 0 390px;
+  height:370px;
+  flex:0 0 370px;
   overflow:hidden;
   background:#eaf5fb;
   contain:layout paint;
@@ -217,8 +217,8 @@ img{max-width:100%}
   -webkit-user-drag:none;
 }
 .student-body{
-  height:250px;
-  flex:0 0 250px;
+  height:230px;
+  flex:0 0 230px;
   min-width:0;
   display:flex;
   flex-direction:column;
@@ -228,7 +228,7 @@ img{max-width:100%}
 .student-num{font-family:"Noto Sans JP",sans-serif;color:var(--deep);font-size:9px;line-height:1.3;letter-spacing:.16em;font-weight:900;text-transform:uppercase}
 .student-name{margin-top:8px;min-width:0;font-family:"Noto Sans JP",sans-serif;font-size:25px;line-height:1.22;font-weight:900;letter-spacing:-.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .student-name-ko{margin-top:5px;min-width:0;color:var(--muted);font-size:12px;line-height:1.45;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.student-quote{margin-top:18px;padding-top:15px;border-top:1px solid var(--line);min-width:0;overflow:hidden}
+.student-quote{margin-top:16px;padding-top:13px;border-top:1px solid var(--line);min-width:0;overflow:hidden}
 .quote-jp,.quote-ko{min-width:0;max-width:100%;overflow:hidden;overflow-wrap:anywhere}
 .quote-jp{
   font-family:"Noto Sans JP",sans-serif;
@@ -281,9 +281,9 @@ img{max-width:100%}
 /* ---------- tablet ---------- */
 @media (max-width:980px){
   .students-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .student-card{height:620px}
-  .student-image{height:370px;flex-basis:370px}
-  .student-body{height:250px;flex-basis:250px}
+  .student-card{height:580px}
+  .student-image{height:350px;flex-basis:350px}
+  .student-body{height:230px;flex-basis:230px}
   .modal-grid{grid-template-columns:minmax(0,1fr) 360px}
 }
 
@@ -354,12 +354,12 @@ img{max-width:100%}
   .grade-jp{font-size:18px}
 
   /* fixed size per card; independent from neighbor/content length */
-  .student-card{height:640px}
-  .student-image{height:390px;flex-basis:390px}
-  .student-body{height:250px;flex-basis:250px;padding:20px 20px 18px}
+  .student-card{height:600px}
+  .student-image{height:370px;flex-basis:370px}
+  .student-body{height:230px;flex-basis:230px;padding:18px 20px 16px}
   .student-name{font-size:25px}
   .student-name-ko{font-size:12px}
-  .student-quote{margin-top:18px;padding-top:14px}
+  .student-quote{margin-top:16px;padding-top:13px}
   .quote-jp{font-size:13px;line-height:1.65;-webkit-line-clamp:2;line-clamp:2}
   .quote-ko{font-size:11px;line-height:1.55;-webkit-line-clamp:2;line-clamp:2}
 
@@ -377,9 +377,9 @@ img{max-width:100%}
 
 @media (max-width:380px){
   .nav-join{display:none}
-  .student-card{height:620px}
-  .student-image{height:375px;flex-basis:375px}
-  .student-body{height:245px;flex-basis:245px;padding-left:18px;padding-right:18px}
+  .student-card{height:580px}
+  .student-image{height:350px;flex-basis:350px}
+  .student-body{height:230px;flex-basis:230px;padding:18px}
   .student-name{font-size:23px}
 }
 
