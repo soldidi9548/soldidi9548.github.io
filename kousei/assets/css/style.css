@@ -231,7 +231,9 @@ img{max-width:100%}
 .student-quote{margin-top:16px;padding-top:13px;border-top:1px solid var(--line);min-width:0;overflow:hidden}
 .quote-jp,.quote-ko{min-width:0;max-width:100%;overflow:hidden;}
 .quote-jp{
-  word-break:keep-all;
+  white-space:pre-line;
+  word-break:normal;
+  overflow-wrap:anywhere;
   line-break:strict;
 
   font-family:"Noto Sans JP",sans-serif;
@@ -262,7 +264,7 @@ img{max-width:100%}
 .modal-close{position:absolute;right:14px;top:14px;z-index:5;width:42px;height:42px;border:0;background:rgba(255,255,255,.94);color:var(--ink);font-size:28px;line-height:1;cursor:pointer;box-shadow:0 4px 18px rgba(20,55,78,.18);-webkit-appearance:none;appearance:none}
 .modal-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);min-height:600px}
 .modal-image{position:relative;min-width:0;min-height:600px;overflow:hidden;background:#eaf5fb}
-.modal-image img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:contain;object-position:center center}
+.modal-image img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center center}
 .modal-content{min-width:0;padding:54px 42px 40px;}
 #modalName{margin:11px 0 0;font-family:"Noto Sans JP",sans-serif;font-size:34px;line-height:1.25;font-weight:900;letter-spacing:-.03em;}
 .modal-name-ko{margin-top:5px;color:var(--muted);font-size:13px;line-height:1.6;font-weight:600}
@@ -272,10 +274,18 @@ img{max-width:100%}
 .modal-quote{margin-top:26px;padding:20px 22px;background:var(--soft);border-left:3px solid var(--sky)}
 .modal-quote .quote-jp,.modal-quote .quote-ko{display:block!important;overflow:visible!important;-webkit-line-clamp:unset!important;line-clamp:unset!important}
 .modal-quote .quote-jp{
-  word-break:keep-all;
+  white-space:pre-line;
+  word-break:normal;
+  overflow-wrap:anywhere;
   line-break:strict;
 font-size:15px;line-height:1.8}
 .modal-quote .quote-ko{font-size:12px;line-height:1.7;margin-top:8px}
+
+
+/* Popup hardening: fill the image pane and never let text escape the panel. */
+.modal-grid,.modal-content,.profile-table,.modal-quote{min-width:0;max-width:100%}
+.modal-content{overflow:hidden}
+.profile-table span,.modal-quote,.modal-quote .quote-jp,.modal-quote .quote-ko{overflow-wrap:anywhere;word-break:normal}
 
 /* ---------- footer / charms ---------- */
 .floating-charms{position:fixed;right:16px;bottom:18px;z-index:20;display:flex;flex-direction:column;gap:5px;color:rgba(76,157,205,.32);pointer-events:none}
@@ -461,9 +471,11 @@ font-size:10.5px;line-height:1.5;-webkit-line-clamp:2;line-clamp:2}
   .profile-table b{font-size:9px}
   .modal-quote{margin-top:15px;padding:12px 12px;border-left-width:2px}
   .modal-quote .quote-jp{
-  word-break:keep-all;
+  white-space:pre-line;
+  word-break:normal;
+  overflow-wrap:anywhere;
   line-break:strict;
-font-size:11px;line-height:1.55}
+  font-size:11px;line-height:1.55}
   .modal-quote .quote-ko{font-size:9.5px;line-height:1.5;margin-top:5px}
   .modal-close{right:8px;top:8px;width:34px;height:34px;font-size:24px}
 
