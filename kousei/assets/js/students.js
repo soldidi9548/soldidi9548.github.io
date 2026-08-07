@@ -97,6 +97,19 @@ window.KOUSEI_STUDENTS = [
   quoteKR: "이번 여름은 왠지 조금 특별할 것 같아.",
   cardImage: "assets/images/rin_card.png",
   popupImage: "assets/images/rin_popup.png"
+},
+  {
+  nameJP: "小川 悠",
+  nameKR: "오가와 유우",
+  gender: "남학생",
+  grade: 1,
+  className: "A",
+  age: "17세",
+  keyword: "밴드부 / 마이웨이 / 장난기",
+  quoteJP: "後悔も、振り返ることもなく。",
+  quoteKR: "후회도, 뒤도 없이.",
+  cardImage: "assets/images/uyu_card.png",
+  popupImage: "assets/images/uyu_popup.png"
 }
 ];
 
