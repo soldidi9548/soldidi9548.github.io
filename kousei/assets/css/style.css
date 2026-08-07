@@ -30,7 +30,7 @@ body{
   background:#fff;
   font-family:"Noto Sans KR","Noto Sans JP",system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif;
   overflow-x:hidden;
-  word-break:keep-all;
+  word-break:normal;
 }
 body.modal-open{overflow:hidden;touch-action:none}
 button,input,textarea,select{font:inherit}
@@ -283,6 +283,56 @@ font-size:15px;line-height:1.8}
 
 /* Never hide core content for reveal animation. */
 .reveal{opacity:1;transform:none}
+
+
+/* ---------- Safari / iOS text wrapping hardening ---------- */
+.notice,
+.notice-top,
+.notice-body,
+.notice-body p,
+.notice-list,
+.notice-row,
+.notice-row > *,
+.notice-row > div,
+.rule-lane,
+.rule-content,
+.rule-content p,
+.rule-content li,
+.operation-note,
+.qa-answer{
+  min-width:0;
+  max-width:100%;
+}
+
+.notice-body .jp,
+.notice-row .jp,
+.notice-top h3{
+  white-space:normal;
+  word-break:normal;
+  overflow-wrap:anywhere;
+  line-break:strict;
+}
+
+.notice-body .translation,
+.notice-row .translation,
+.rule-content p,
+.rule-content li,
+.operation-note,
+.qa-answer{
+  white-space:normal;
+  word-break:normal;
+  overflow-wrap:anywhere;
+}
+
+/* Keep short UI labels together without forcing long body copy to stay unbroken. */
+.student-name,
+.student-name-ko,
+.roster-heading,
+.grade-heading,
+.tab-btn,
+.join-btn{
+  word-break:keep-all;
+}
 
 /* ---------- tablet ---------- */
 @media (max-width:980px){
