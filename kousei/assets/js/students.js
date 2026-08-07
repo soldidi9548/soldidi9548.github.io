@@ -84,7 +84,20 @@ window.KOUSEI_STUDENTS = [
     quoteKR: "올여름은 너와 함께라면 좋겠어.",
     cardImage: "assets/images/kaito_card.png",
     popupImage: "assets/images/kaito_popup.png"
-  }
+  },
+  {
+  nameJP: "冬咲 凛",
+  nameKR: "후유사키 린",
+  gender: "여학생",
+  grade: 1,
+  className: "B",
+  age: "17세",
+  keyword: "차분함 / 현실주의자 / 노력형",
+  quoteJP: "今年の夏は、なんだかちょっと特別になりそう。",
+  quoteKR: "이번 여름은 왠지 조금 특별할 것 같아.",
+  cardImage: "assets/images/rin_card.png",
+  popupImage: "assets/images/rin_popup.png"
+}
 ];
 
 /*
