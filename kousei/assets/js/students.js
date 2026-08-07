@@ -97,6 +97,19 @@ window.KOUSEI_STUDENTS = [
   quoteKR: "후회도, 뒤도 없이.",
   cardImage: "assets/images/uyu_card.png",
   popupImage: "assets/images/uyu_popup.png"
+},
+  {
+  nameJP: "桐谷 凪",
+  nameKR: "키리타니 나기",
+  gender: "남학생",
+  grade: 2,
+  className: "B",
+  age: "18세",
+  keyword: "까칠함/귀가부/사실은 여림",
+  quoteJP: "……何見てんだよ。喧嘩売ってんの？",
+  quoteKR: "…뭘 쳐다봐. 시비 거는 거야?",
+  cardImage: "assets/images/nagi_card.png",
+  popupImage: "assets/images/nagi_popup.png"
 }
 ];
 
