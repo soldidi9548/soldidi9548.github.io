@@ -134,7 +134,7 @@ window.KOUSEI_STUDENTS = [
    keyword: "털털함 / 두꺼운 낯짝 / 다도부",
    quoteJP: "暑いなぁ。……ま、夏だしな。",
    quoteKR: "덥네…… 뭐, 여름이니까.",
-   cardImage: "assets/images/kay_card.png",
+   cardImage: "assets/images/key_card.png",
    popupImage: "assets/images/key_popup.png"
   },
   {
