@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7fc8f6">
+  <meta name="description" content="코우세이 고교 여름 캠프 마니또">
+  <title>光星高校 · MANITTO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="school-mark">光</div>
+      <div class="hero-copy">
+        <div class="eyebrow">KOUSEI SUMMER CAMP · SECRET MANITTO</div>
+        <h1>光星高校 <span>마니또</span></h1>
+        <p>정체는 숨기고, 마음은 조금씩 남겨 주세요.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="mission-section">
+      <div class="section-heading">
+        <div>
+          <div class="section-en">TODAY'S MISSION · 今日のミッション</div>
+          <h2>오늘의 미션</h2>
+        </div>
+        <div class="mission-day-badge" id="missionDayBadge">DAY 1</div>
+      </div>
+
+      <article class="today-card" id="todayCard">
+        <div class="today-side">
+          <span class="today-label">TODAY</span>
+          <strong id="todayDay">01</strong>
+        </div>
+        <div class="today-content">
+          <div class="today-kicker" id="todayKicker">FIRST HELLO</div>
+          <h3 id="todayTitle">첫 인사</h3>
+          <p id="todayDescription">마니또의 사물함에 익명으로 첫 메시지를 남겨주세요.</p>
+        </div>
+        <div class="today-icon" id="todayIcon">💌</div>
+      </article>
+
+      <div class="mission-progress" id="missionProgress"></div>
+      <p class="mission-date-note" id="missionDateNote"></p>
+    </section>
+
+    <section class="identity-section">
+      <div class="section-heading split">
+        <div>
+          <div class="section-en">MY SECRET PARTNER</div>
+          <h2>나의 마니또 확인</h2>
+          <p>자기 캐릭터를 선택하고 전달받은 비밀번호를 입력해 주세요.</p>
+        </div>
+        <label class="search-box" aria-label="학생 검색">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="이름 · 학년 · 반 검색">
+        </label>
+      </div>
+
+      <div class="student-grid" id="studentGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>검색 결과가 없습니다.</div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>KOUSEI HIGH SCHOOL · SUMMER CAMP 2026</strong>
+    <span>정체는 마지막 날까지 비밀로.</span>
+  </footer>
+
+  <div class="modal" id="manittoModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <button class="modal-close" id="modalClose" type="button" aria-label="닫기">×</button>
+
+      <div class="modal-head">
+        <div class="student-plate" id="modalPlate">1-A</div>
+        <div>
+          <div class="section-en">PRIVATE RESULT</div>
+          <h2 id="modalName">학생 이름</h2>
+          <p id="modalSub"></p>
+        </div>
+      </div>
+
+      <section class="unlock-panel" id="unlockPanel">
+        <div class="lock-symbol">🔒</div>
+        <strong>본인 확인이 필요합니다.</strong>
+        <p>사물함과 동일한 비밀번호를 입력해 주세요.</p>
+        <form id="unlockForm" class="unlock-form">
+          <input id="passwordInput" type="password" autocomplete="current-password" placeholder="비밀번호" required>
+          <button id="unlockButton" type="submit">확인하기</button>
+        </form>
+        <div class="unlock-status" id="unlockStatus" role="status"></div>
+      </section>
+
+      <section class="result-panel" id="resultPanel" hidden>
+        <div class="result-ribbon">YOUR MANITTO</div>
+        <div class="result-star">✦</div>
+        <p class="result-lead">당신이 몰래 챙겨줄 학생은</p>
+        <h3 id="targetNameJP">—</h3>
+        <div class="target-name-ko" id="targetNameKR">—</div>
+        <div class="target-meta" id="targetMeta">—</div>
+        <p class="result-message">4일 동안 정체를 들키지 않고 오늘의 미션과 사물함을 이용해 조용히 마음을 전해 주세요.</p>
+        <div class="result-actions">
+          <button id="lockAgain" type="button">다시 잠그기</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script src="assets/js/students.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/manitto-config.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
