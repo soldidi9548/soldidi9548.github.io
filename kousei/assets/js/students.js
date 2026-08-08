@@ -124,7 +124,8 @@ window.KOUSEI_STUDENTS = [
   cardImage: "assets/images/yui_card.png",
   popupImage: "assets/images/yui_popup.png"
 }
-
+  
+]
 /*
 새 학생 예시 — 이 블록을 window.KOUSEI_STUDENTS 배열 안에 복사해서 사용하세요.
 마지막 학생 뒤에 추가할 때는 바로 앞 객체 끝에 쉼표(,)가 있는지만 확인하면 됩니다.
@@ -143,4 +144,3 @@ window.KOUSEI_STUDENTS = [
   popupImage: "assets/images/example_popup.png"
 }
 */
-]
