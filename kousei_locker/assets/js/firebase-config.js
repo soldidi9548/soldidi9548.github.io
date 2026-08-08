@@ -2,7 +2,7 @@
 // firebaseConfig의 apiKey를 아래에 붙여넣으세요.
 // 나머지 값은 현재 코우세이 프로젝트 기준으로 미리 입력되어 있습니다.
 window.KOUSEI_FIREBASE_CONFIG = {
-  apiKey: "PASTE_YOUR_FIREBASE_WEB_API_KEY_HERE",
+  apiKey: "AIzaSyDHnQensIYvBGiXbyhHxy8_2nh3udHvl_c",
   authDomain: "soldidi9548-1c9ee.firebaseapp.com",
   databaseURL: "https://soldidi9548-1c9ee-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "soldidi9548-1c9ee",
