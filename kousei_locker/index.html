@@ -29,7 +29,7 @@
         <span class="intro-icon">✦</span>
         <div>
           <strong>익명 선물함 이용 안내</strong>
-          <p>이미지 1장과 메시지를 함께 남길 수 있습니다. 업로드한 선물은 받은 학생의 사물함에 바로 공개됩니다.</p>
+          <p>이미지 1장과 메시지를 익명으로 남길 수 있습니다. 받은 선물은 해당 학생만 비밀번호로 열람할 수 있습니다.</p>
         </div>
       </div>
       <div class="toolbar">
@@ -73,8 +73,19 @@
             </div>
             <span class="count-badge" id="giftCount">0</span>
           </div>
-          <div class="gift-list" id="giftList">
-            <div class="loading">사물함을 확인하고 있습니다…</div>
+          <div class="locker-auth" id="lockerAuth">
+            <div class="lock-icon">🔒</div>
+            <strong>이 사물함의 주인만 열 수 있어요.</strong>
+            <p>본인에게 전달된 비밀번호를 입력해 주세요.</p>
+            <form id="unlockForm" class="unlock-form">
+              <input id="lockerPassword" type="password" autocomplete="current-password" placeholder="사물함 비밀번호" required>
+              <button id="unlockButton" type="submit">열기</button>
+            </form>
+            <div class="unlock-status" id="unlockStatus" role="status"></div>
+          </div>
+          <div class="gift-private" id="giftPrivate" hidden>
+            <div class="private-toolbar"><span>🔓 본인 확인 완료</span><button id="lockAgain" type="button">다시 잠그기</button></div>
+            <div class="gift-list" id="giftList"><div class="loading">사물함을 확인하고 있습니다…</div></div>
           </div>
         </section>
 
@@ -114,6 +125,7 @@
   <div class="toast" id="toast" aria-live="polite"></div>
 
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
   <script src="assets/js/students.js"></script>

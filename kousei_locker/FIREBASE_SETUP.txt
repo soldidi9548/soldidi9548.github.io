@@ -1,0 +1,71 @@
+코우세이 사물함 — 개인 비밀번호 설정
+
+이 버전은 "선물 보내기 = 누구나 익명", "받은 선물 보기 = 사물함 주인만" 구조입니다.
+비밀번호를 HTML/JS에 저장하지 않고 Firebase Authentication으로 확인합니다.
+
+1) Firebase Console > Authentication > 시작하기 > 로그인 방법
+   "이메일/비밀번호"를 사용 설정합니다.
+
+2) Authentication > 사용자(Users)에서 학생별 계정을 직접 추가합니다.
+   이메일은 아래처럼 lockerId + @kousei-locker.invalid 로 정확히 입력합니다.
+   비밀번호는 학생에게 개별 전달할 비밀번호로 정합니다.
+
+mio@kousei-locker.invalid       미치카미 미오
+tsumugi@kousei-locker.invalid  무라사키 츠무기
+mizuki@kousei-locker.invalid   하세가와 미즈키
+mei@kousei-locker.invalid      아마미야 메이
+kaito@kousei-locker.invalid    하세가와 카이토
+rin@kousei-locker.invalid      후유사키 린
+yuu@kousei-locker.invalid      오가와 유우
+nagi@kousei-locker.invalid     키리타니 나기
+yui@kousei-locker.invalid      사쿠라바 유이
+kei@kousei-locker.invalid      이치노세 케이
+shuto@kousei-locker.invalid    카타기리 슈토
+
+3) Realtime Database > 규칙에 아래 내용을 게시합니다.
+
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "lockerMessages": {
+      "$lockerId": {
+        ".read": "auth != null && auth.token.email == $lockerId + '@kousei-locker.invalid'",
+        "$messageId": {
+          ".write": "!data.exists() && newData.exists()",
+          ".validate": "newData.hasChildren(['message', 'imagePath', 'createdAt'])",
+          "message": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 500" },
+          "imagePath": { ".validate": "newData.isString() && newData.val().beginsWith('locker-gifts/' + $lockerId + '/') && newData.val().length <= 500" },
+          "createdAt": { ".validate": "newData.isNumber() && newData.val() <= now && newData.val() >= now - 60000" },
+          "$other": { ".validate": false }
+        }
+      }
+    }
+  }
+}
+
+4) Storage > 규칙에 아래 내용을 게시합니다.
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /locker-gifts/{lockerId}/{fileName} {
+      allow create: if request.resource.size <= 5 * 1024 * 1024
+                    && request.resource.contentType.matches('image/.*');
+      allow read: if request.auth != null
+                  && request.auth.token.email == lockerId + '@kousei-locker.invalid';
+      allow update, delete: if false;
+    }
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+5) 기존에 imageUrl로 저장된 선물이 있다면 새 버전에서는 표시할 수는 있지만,
+   과거 download URL을 이미 아는 사람에게까지 접근을 회수하는 것은 별개입니다.
+   새로 올라오는 선물은 imagePath만 DB에 저장합니다.
+
+6) 학생 추가
+   assets/js/students.js에 학생 객체를 추가하고 lockerId를 새로 정한 뒤,
+   Authentication에도 "lockerId@kousei-locker.invalid" 계정을 하나 추가하면 됩니다.
