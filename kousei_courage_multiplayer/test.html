@@ -1,5 +1,0 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>담력시험 테스트룸</title><link rel="stylesheet" href="assets/css/style.css"></head><body><header class="hero"><div class="wrap"><div class="mini">LOCAL TEST ROOM</div><h1>테스트룸</h1><p>Firebase에 기록하지 않고 멀티 구조와 개인 단서 분배 느낌만 확인하는 페이지입니다.</p></div></header><main class="wrap"><section class="card"><div class="actions"><button id="regen" class="btn">새 테스트 생성</button></div></section><div id="test" class="test-grid"></div></main><script src="assets/js/students.js"></script><script>const $=s=>document.querySelector(s);function go(){const ps=KOUSEI_COURAGE_STUDENTS.filter(x=>x.className==='A').sort((a,b)=>a.grade-b.grade),ds=ps.map(()=>Math.floor(Math.random()*10));$('#test').innerHTML=ps.map((p,i)=>`<section class="test-pane"><b>${p.nameJP}</b><pre>STAGE 1 · 개인 단서
-
-${i+1}번째 숫자는 ${ds[i]}
-
-밴드 채팅에서 다른 A반 학생들과 공유하세요.</pre></section>`).join('')}$('#regen').onclick=go;go();</script></body></html>
