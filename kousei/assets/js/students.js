@@ -105,14 +105,14 @@ window.KOUSEI_STUDENTS = [
    grade: 2,
    className: "B",
    age: "18세",
-   keyword: "까칠함/귀가부/사실은 여림",
+   keyword: "까칠함 / 귀가부 / 사실은 여림",
    quoteJP: "……何見てんだよ。喧嘩売ってんの？",
    quoteKR: "…뭘 쳐다봐. 시비 거는 거야?",
    cardImage: "assets/images/nagi_card.png",
    popupImage: "assets/images/nagi_popup.png"
   },
   {
-   nameJP: サクラバ ユイ",
+   nameJP: "サクラバ ユイ",
    nameKR: "사쿠라바 유이",
    gender: "여학생",
    grade: 2,
