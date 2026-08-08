@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#8fd3ff">
+<title>光星祭 · SUMMER FESTIVAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="festival-sky" aria-hidden="true">
+  <span class="cloud c1">☁</span><span class="cloud c2">☁</span>
+</div>
+<header class="hero">
+  <div class="lantern-line" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="hero-inner">
+    <div class="eyebrow">KOUSEI SUMMER CAMP 2026 · DAY 05</div>
+    <div class="hero-title-wrap"><span class="hero-fan">🎐</span><h1>光星祭</h1><span class="hero-fan">🎐</span></div>
+    <p>바닷바람이 부는 캠프장에 하루뿐인 작은 여름 축제가 열렸습니다.</p>
+    <div class="hero-meta"><span>SUMMER FESTIVAL</span><b>·</b><span id="boothCount">0 BOOTHS OPEN</span></div>
+  </div>
+</header>
+
+<main>
+  <section class="passport-wrap" id="passportSection">
+    <div class="passport-card">
+      <div class="passport-copy">
+        <div class="section-en">FESTIVAL PASSPORT</div>
+        <h2>축제 도장 수첩</h2>
+        <p>부스를 체험하고 도장을 모아보세요. 사물함과 같은 계정으로 로그인하면 도장이 저장됩니다.</p>
+        <div class="passport-user" id="passportUser">아직 패스포트를 열지 않았습니다.</div>
+        <div class="passport-actions">
+          <button id="passportLoginBtn" class="primary-btn" type="button">패스포트 열기</button>
+          <button id="passportLogoutBtn" class="ghost-btn" type="button" hidden>닫기</button>
+        </div>
+        <div class="fragment-wallet">
+          <div><span>보유 조각</span><strong id="fragmentHeld">0</strong></div>
+          <div><span>보낸 조각</span><strong id="fragmentSent">0</strong></div>
+        </div>
+        <div class="fragment-actions">
+          <button id="sendOneFragment" type="button" disabled>조각 1개 보내기</button>
+          <button id="sendAllFragments" type="button" disabled>모두 보내기</button>
+        </div>
+      </div>
+      <div class="stamp-book" id="stampBook" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="firework-wrap wrap-narrow" id="fireworkScene">
+    <div class="firework-copy">
+      <div class="section-en">FIREWORK PROJECT</div>
+      <h2>바닷가 불꽃놀이 준비</h2>
+      <div id="fireworkMessage" class="firework-message"><strong>불꽃놀이 준비 중</strong><span>부스 도장 1개마다 축제 조각 1개를 얻어요. 패스포트에서 조각을 보내 주세요.</span></div>
+    </div>
+    <div class="firework-meter">
+      <div class="firework-meter-head"><span id="fireworkCount">0 / 30</span><strong id="fireworkPercent">0%</strong></div>
+      <div class="firework-track"><i id="fireworkFill"></i></div>
+      <div class="firework-sparks" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section class="festival-guide wrap-narrow">
+    <div>
+      <div class="section-en">FESTIVAL STREET</div>
+      <h2>축제 골목을 걸어보세요.</h2>
+      <p>학교 공식 부스와 학생들이 직접 준비한 부스가 한 줄로 이어집니다. 간판을 누르면 바로 입장할 수 있어요.</p>
+    </div>
+  </section>
+
+  <section class="street-section">
+    <div class="street-top wrap-narrow">
+      <div><div class="section-en">OPEN BOOTHS</div><h2>오늘의 부스</h2></div>
+      <div class="filters" id="filters">
+        <button class="active" data-filter="all">전체</button>
+        <button data-filter="school">학교 운영</button>
+        <button data-filter="student">학생 운영</button>
+      </div>
+    </div>
+
+    <div class="festival-street">
+      <div class="string-lights" aria-hidden="true"></div>
+      <div class="street-inner" id="boothGrid"></div>
+      <div id="empty" class="empty" hidden>아직 공개된 부스가 없습니다.</div>
+      <div class="street-path" aria-hidden="true"><span>✦</span><span>✦</span><span>✦</span><span>✦</span></div>
+    </div>
+  </section>
+
+  <section class="hall-wrap wrap-narrow" id="hallOfFame">
+    <div class="hall-head">
+      <div><div class="section-en">FESTIVAL HALL OF FAME</div><h2>축제 명예의 전당</h2><p>축제가 끝나는 8월 14일 오후 9시에 최종 기록이 공개됩니다.</p></div>
+      <div class="hall-countdown" id="hallCountdown">집계 대기 중</div>
+    </div>
+    <div class="hall-lock"><span>🏮</span><strong>아직 축제가 진행 중입니다.</strong><p>마감 전까지의 도장과 불꽃놀이 조각 기록이 최종 집계됩니다.</p></div>
+    <div class="hall-body" id="hallBody"></div>
+  </section>
+</main>
+
+<footer>光星高校 · SUMMER CAMP 2026 · FESTIVAL COMMITTEE</footer>
+
+<div class="modal" id="loginModal" hidden>
+  <div class="modal-backdrop" data-close-login></div>
+  <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <button class="modal-close" type="button" data-close-login>×</button>
+    <div class="section-en">OPEN PASSPORT</div>
+    <h2 id="loginTitle">내 축제 패스포트 열기</h2>
+    <p>자기 캐릭터를 선택하고 사물함과 같은 비밀번호를 입력해 주세요.</p>
+    <label class="field"><span>학생</span><select id="studentSelect"></select></label>
+    <label class="field"><span>비밀번호</span><input id="passportPassword" type="password" autocomplete="current-password" placeholder="비밀번호"></label>
+    <button class="primary-btn full" id="loginSubmit" type="button">로그인</button>
+    <div class="login-status" id="loginStatus"></div>
+  </section>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/students.js"></script>
+<script src="assets/js/booths.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
