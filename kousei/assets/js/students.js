@@ -110,8 +110,19 @@ window.KOUSEI_STUDENTS = [
   quoteKR: "…뭘 쳐다봐. 시비 거는 거야?",
   cardImage: "assets/images/nagi_card.png",
   popupImage: "assets/images/nagi_popup.png"
-}
-];
+},
+  {
+  nameJP: サクラバ ユイ",
+  nameKR: "사쿠라바 유이",
+  gender: "여학생",
+  grade: 2,
+  className: "C",
+  age: "18세",
+  keyword: "활발함 / 도서부 / 호기심 많음",
+  quoteJP: "ここでたくさんの思い出を作りたい。",
+  quoteKR: "이곳에서 많은 추억을 만들고 싶어.",
+  cardImage: "assets/images/yui_card.png",
+  popupImage: "assets/images/yui_popup.png"
 
 /*
 새 학생 예시 — 이 블록을 window.KOUSEI_STUDENTS 배열 안에 복사해서 사용하세요.
