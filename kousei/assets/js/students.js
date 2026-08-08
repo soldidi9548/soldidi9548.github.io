@@ -123,7 +123,7 @@ window.KOUSEI_STUDENTS = [
   quoteKR: "이곳에서 많은 추억을 만들고 싶어.",
   cardImage: "assets/images/yui_card.png",
   popupImage: "assets/images/yui_popup.png"
-
+}
 /*
 새 학생 예시 — 이 블록을 window.KOUSEI_STUDENTS 배열 안에 복사해서 사용하세요.
 마지막 학생 뒤에 추가할 때는 바로 앞 객체 끝에 쉼표(,)가 있는지만 확인하면 됩니다.
