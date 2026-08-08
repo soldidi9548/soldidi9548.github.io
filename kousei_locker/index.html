@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7fc8f6">
+  <meta name="description" content="코우세이 고교 여름 캠프 익명 사물함">
+  <title>光星高校 · 익명 사물함</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="school-mark">光</div>
+      <div class="hero-copy">
+        <div class="eyebrow">KOUSEI SUMMER CAMP · PRIVATE LOCKERS</div>
+        <h1>光星高校 <span>사물함</span></h1>
+        <p>누군가에게 조용히 남기고 싶은 마음이 있다면, 그 학생의 사물함에 익명으로 넣어 주세요.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro wrap">
+      <div class="intro-note">
+        <span class="intro-icon">✦</span>
+        <div>
+          <strong>익명 선물함 이용 안내</strong>
+          <p>이미지 1장과 메시지를 함께 남길 수 있습니다. 업로드한 선물은 받은 학생의 사물함에 바로 공개됩니다.</p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <div>
+          <div class="section-en">LOCKER DIRECTORY</div>
+          <h2>학생 사물함</h2>
+        </div>
+        <label class="search-box" aria-label="학생 검색">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="이름 · 학년 · 반 검색">
+        </label>
+      </div>
+      <div class="locker-grid" id="lockerGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>검색 결과가 없습니다.</div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>KOUSEI HIGH SCHOOL · SUMMER CAMP 2026</strong>
+    <span>익명으로 전해진 마음도 누군가의 여름에 오래 남을 수 있습니다.</span>
+  </footer>
+
+  <div class="modal" id="lockerModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="lockerTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="닫기">×</button>
+      <div class="locker-head">
+        <div class="locker-plate" id="lockerPlate">1-A</div>
+        <div>
+          <div class="section-en">PRIVATE LOCKER</div>
+          <h2 id="lockerTitle">학생 이름</h2>
+          <p id="lockerSub"></p>
+        </div>
+      </div>
+
+      <div class="modal-layout">
+        <section class="gift-wall">
+          <div class="panel-title">
+            <div>
+              <span class="section-en">RECEIVED GIFTS</span>
+              <h3>받은 선물</h3>
+            </div>
+            <span class="count-badge" id="giftCount">0</span>
+          </div>
+          <div class="gift-list" id="giftList">
+            <div class="loading">사물함을 확인하고 있습니다…</div>
+          </div>
+        </section>
+
+        <aside class="send-panel">
+          <div class="panel-title compact">
+            <div>
+              <span class="section-en">LEAVE A GIFT</span>
+              <h3>익명 선물 남기기</h3>
+            </div>
+          </div>
+
+          <form id="giftForm">
+            <label class="upload-box" id="uploadBox">
+              <input id="giftImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required>
+              <img id="imagePreview" alt="선물 이미지 미리보기" hidden>
+              <div class="upload-placeholder" id="uploadPlaceholder">
+                <span class="upload-icon">＋</span>
+                <strong>선물 이미지 선택</strong>
+                <small>JPG · PNG · WEBP · GIF / 최대 5MB</small>
+              </div>
+            </label>
+
+            <label class="field-label" for="giftMessage">메시지</label>
+            <textarea id="giftMessage" maxlength="500" rows="6" placeholder="익명으로 전할 말을 남겨 주세요." required></textarea>
+            <div class="field-meta"><span>보낸 사람은 표시되지 않습니다.</span><span id="charCount">0 / 500</span></div>
+
+            <button class="send-button" id="sendButton" type="submit">
+              <span>익명으로 선물하기</span><b>→</b>
+            </button>
+            <div class="form-status" id="formStatus" role="status"></div>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
+  <script src="assets/js/students.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
