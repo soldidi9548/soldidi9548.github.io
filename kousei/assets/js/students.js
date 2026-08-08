@@ -73,74 +73,75 @@ window.KOUSEI_STUDENTS = [
     popupImage: "assets/images/kaito_popup.png"
   },
   {
-  nameJP: "冬咲 凛",
-  nameKR: "후유사키 린",
-  gender: "여학생",
-  grade: 1,
-  className: "B",
-  age: "17세",
-  keyword: "차분함 / 현실주의자 / 노력형",
-  quoteJP: "今年の夏は、なんだかちょっと特別になりそう。",
-  quoteKR: "이번 여름은 왠지 조금 특별할 것 같아.",
-  cardImage: "assets/images/rin_card.png",
-  popupImage: "assets/images/rin_popup.png"
-},
+   nameJP: "冬咲 凛",
+   nameKR: "후유사키 린",
+   gender: "여학생",
+   grade: 1,
+   className: "B",
+   age: "17세",
+   keyword: "차분함 / 현실주의자 / 노력형",
+   quoteJP: "今年の夏は、なんだかちょっと特別になりそう。",
+   quoteKR: "이번 여름은 왠지 조금 특별할 것 같아.",
+   cardImage: "assets/images/rin_card.png",
+   popupImage: "assets/images/rin_popup.png"
+  },
   {
-  nameJP: "小川 悠",
-  nameKR: "오가와 유우",
-  gender: "남학생",
-  grade: 1,
-  className: "A",
-  age: "17세",
-  keyword: "밴드부 / 마이웨이 / 장난기",
-  quoteJP: "後悔も、振り返ることもなく。",
-  quoteKR: "후회도, 뒤도 없이.",
-  cardImage: "assets/images/uyu_card.png",
-  popupImage: "assets/images/uyu_popup.png"
-},
+   nameJP: "小川 悠",
+   nameKR: "오가와 유우",
+   gender: "남학생",
+   grade: 1,
+   className: "A",
+   age: "17세",
+   keyword: "밴드부 / 마이웨이 / 장난기",
+   quoteJP: "後悔も、振り返ることもなく。",
+   quoteKR: "후회도, 뒤도 없이.",
+   cardImage: "assets/images/uyu_card.png",
+   popupImage: "assets/images/uyu_popup.png"
+  },
   {
-  nameJP: "桐谷 凪",
-  nameKR: "키리타니 나기",
-  gender: "남학생",
-  grade: 2,
-  className: "B",
-  age: "18세",
-  keyword: "까칠함/귀가부/사실은 여림",
-  quoteJP: "……何見てんだよ。喧嘩売ってんの？",
-  quoteKR: "…뭘 쳐다봐. 시비 거는 거야?",
-  cardImage: "assets/images/nagi_card.png",
-  popupImage: "assets/images/nagi_popup.png"
-},
+   nameJP: "桐谷 凪",
+   nameKR: "키리타니 나기",
+   gender: "남학생",
+   grade: 2,
+   className: "B",
+   age: "18세",
+   keyword: "까칠함/귀가부/사실은 여림",
+   quoteJP: "……何見てんだよ。喧嘩売ってんの？",
+   quoteKR: "…뭘 쳐다봐. 시비 거는 거야?",
+   cardImage: "assets/images/nagi_card.png",
+   popupImage: "assets/images/nagi_popup.png"
+  },
   {
-  nameJP: サクラバ ユイ",
-  nameKR: "사쿠라바 유이",
-  gender: "여학생",
-  grade: 2,
-  className: "C",
-  age: "18세",
-  keyword: "활발함 / 도서부 / 호기심 많음",
-  quoteJP: "ここでたくさんの思い出を作りたい。",
-  quoteKR: "이곳에서 많은 추억을 만들고 싶어.",
-  cardImage: "assets/images/yui_card.png",
-  popupImage: "assets/images/yui_popup.png"
-}
-  
-]
+   nameJP: サクラバ ユイ",
+   nameKR: "사쿠라바 유이",
+   gender: "여학생",
+   grade: 2,
+   className: "C",
+   age: "18세",
+   keyword: "활발함 / 도서부 / 호기심 많음",
+   quoteJP: "ここでたくさんの思い出を作りたい。",
+   quoteKR: "이곳에서 많은 추억을 만들고 싶어.",
+   cardImage: "assets/images/yui_card.png",
+   popupImage: "assets/images/yui_popup.png"
+  }
+];
+
 /*
 새 학생 예시 — 이 블록을 window.KOUSEI_STUDENTS 배열 안에 복사해서 사용하세요.
 마지막 학생 뒤에 추가할 때는 바로 앞 객체 끝에 쉼표(,)가 있는지만 확인하면 됩니다.
 
-{
-  nameJP: "日本語 名前",
-  nameKR: "한글 이름",
-  gender: "여학생",
-  grade: 1,
-  className: "A",
-  age: "17세",
-  keyword: "키워드1 / 키워드2 / 키워드3",
-  quoteJP: "日本語の一言。",
-  quoteKR: "한국어 한마디.",
-  cardImage: "assets/images/example_card.png",
-  popupImage: "assets/images/example_popup.png"
-}
+,
+  {
+   nameJP: "日本語 名前",
+   nameKR: "한글 이름",
+   gender: "여학생",
+   grade: 1,
+   className: "A",
+   age: "17세",
+   keyword: "키워드1 / 키워드2 / 키워드3",
+   quoteJP: "日本語の一言。",
+   quoteKR: "한국어 한마디.",
+   cardImage: "assets/images/example_card.png",
+   popupImage: "assets/images/example_popup.png"
+  }
 */
