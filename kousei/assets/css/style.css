@@ -503,6 +503,63 @@ font-size:9.8px}
   .profile-table{grid-template-columns:42px minmax(0,1fr);font-size:9.5px}
 }
 
+
+/* =========================================================
+   CAMP SCHEDULE
+   ========================================================= */
+.camp-schedule{display:grid;gap:18px}
+.schedule-day{position:relative;display:grid;grid-template-columns:112px minmax(0,1fr);min-width:0;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--card-shadow)}
+.schedule-date{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:190px;background:linear-gradient(180deg,#eef9ff,#f8fcff);border-right:1px solid var(--line)}
+.schedule-date span{color:var(--deep);font-size:8px;font-weight:900;letter-spacing:.2em}
+.schedule-date strong{margin-top:5px;color:var(--sky);font-family:"Noto Sans JP",sans-serif;font-size:44px;font-weight:900;line-height:1}
+.schedule-content{display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;min-width:0;padding:30px 34px}
+.schedule-info{min-width:0}
+.schedule-icon{width:52px;height:52px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;background:var(--sky-3);border:1px solid #dcecf6;border-radius:50%;font-size:24px}
+.schedule-tag{margin-bottom:7px;color:var(--deep);font-size:8px;font-weight:900;letter-spacing:.18em}
+.schedule-info h3{margin:0;color:var(--ink);font-size:22px;line-height:1.35;font-weight:900;letter-spacing:-.025em;word-break:keep-all}
+.schedule-info>p{margin:11px 0 0;max-width:760px;color:var(--muted);font-size:13px;line-height:1.85;word-break:keep-all}
+.schedule-box{margin-top:18px;padding:15px 17px;background:#f5faff;border-left:3px solid var(--sky)}
+.schedule-box strong{display:block;color:#3f718f;font-size:12px}
+.schedule-box p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
+.pink-box{background:#fff8fa;border-left-color:var(--pink)}
+.pink-box strong{color:#b85f76}
+.manitto-day::before{content:"";position:absolute;top:0;bottom:0;left:0;width:3px;background:#9bd7f4}
+.manitto-status{display:inline-block;max-width:100%;margin-top:15px;padding:7px 11px;background:#eef9ff;color:#4e91b7;border:1px solid #d9eef9;border-radius:999px;font-size:10px;font-weight:800;line-height:1.5}
+.class-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:18px}
+.class-groups>div{min-width:0;padding:13px 14px;background:#f8fcff;border:1px solid var(--line)}
+.class-groups strong{display:block;color:var(--deep);font-size:12px}
+.class-groups span{display:block;margin-top:5px;color:var(--muted);font-size:10px;line-height:1.6;word-break:keep-all}
+.special-day{border-color:#a8d6ef;box-shadow:7px 8px 0 #e0f3fc}
+.special-day .schedule-date{background:linear-gradient(180deg,#def4ff,#f8fcff)}
+.special-day .schedule-date strong{color:#4eaddd}
+.schedule-notice{display:flex;gap:14px;margin-top:34px;padding:21px 23px;background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.schedule-notice-icon{flex:0 0 auto;color:var(--sky);font-size:17px}
+.schedule-notice strong{display:block;font-size:12px}
+.schedule-notice p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.75}
+@media (max-width:620px){
+  .camp-schedule{gap:13px}
+  .schedule-day{grid-template-columns:58px minmax(0,1fr);box-shadow:4px 5px 0 #e7f3fa}
+  .schedule-date{min-height:100%}
+  .schedule-date span{font-size:6.5px;letter-spacing:.15em}
+  .schedule-date strong{margin-top:4px;font-size:28px}
+  .schedule-content{grid-template-columns:1fr;gap:10px;padding:20px 15px 22px}
+  .schedule-icon{width:39px;height:39px;font-size:18px}
+  .schedule-tag{margin-bottom:5px;font-size:7px}
+  .schedule-info h3{font-size:17px;line-height:1.4}
+  .schedule-info>p{margin-top:8px;font-size:10.5px;line-height:1.75;word-break:normal}
+  .schedule-box{margin-top:13px;padding:11px 12px}
+  .schedule-box strong{font-size:10px}
+  .schedule-box p{font-size:9px;line-height:1.65}
+  .manitto-status{margin-top:12px;padding:6px 8px;border-radius:3px;font-size:8.5px;white-space:normal}
+  .class-groups{grid-template-columns:1fr;gap:6px;margin-top:13px}
+  .class-groups>div{padding:9px 10px}
+  .class-groups strong{font-size:10px}
+  .class-groups span{margin-top:3px;font-size:8.5px}
+  .schedule-notice{gap:10px;margin-top:26px;padding:16px 14px}
+  .schedule-notice strong{font-size:10px}
+  .schedule-notice p{font-size:9px;line-height:1.65}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
