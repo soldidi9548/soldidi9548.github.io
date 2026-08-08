@@ -4,7 +4,7 @@
   const students = Array.isArray(window.KOUSEI_STUDENTS) ? window.KOUSEI_STUDENTS : [];
   const config = window.KOUSEI_FIREBASE_CONFIG || {};
   const configured = config.apiKey && !config.apiKey.includes('PASTE_');
-  const AUTH_DOMAIN = 'kousei-locker.invalid';
+  const AUTH_DOMAIN = 'kousei.local';
 
   let db = null, storage = null, auth = null;
   let activeStudent = null, activeListenerRef = null, activeListenerFn = null;
