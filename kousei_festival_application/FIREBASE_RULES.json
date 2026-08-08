@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "festivalBoothApplications": {
+      ".read": "auth != null && auth.token.email == 'gm@kousei.local'",
+      "$id": {
+        ".write": "!data.exists() || (auth != null && auth.token.email == 'gm@kousei.local')"
+      }
+    }
+  }
+}
