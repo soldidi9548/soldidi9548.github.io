@@ -28,7 +28,7 @@ window.KOUSEI_STUDENTS = [
     className: "A",
     age: "18세",
     keyword: "차분함 / 밴드부 / 서정적",
-    quoteJP: "…⁠この潮風から拾い上げる歌詞は、何だろう？",
+    quoteJP: "……⁠この潮風から拾い上げる歌詞は、何だろう？",
     quoteKR: "... 이 바닷바람에서 집어 올 노랫말은 뭘까?",
     cardImage: "assets/images/tsumugi_card.png",
     popupImage: "assets/images/tsumugi_popup.png"
@@ -123,6 +123,32 @@ window.KOUSEI_STUDENTS = [
    quoteKR: "이곳에서 많은 추억을 만들고 싶어.",
    cardImage: "assets/images/yui_card.png",
    popupImage: "assets/images/yui_popup.png"
+  },
+  {
+   nameJP: "一ノ瀬 圭",
+   nameKR: "이치노세 케이",
+   gender: "남학생",
+   grade: 2,
+   className: "C",
+   age: "18세",
+   keyword: "털털함 / 두꺼운 낯짝 / 다도부",
+   quoteJP: "暑いなぁ。……ま、夏だしな。",
+   quoteKR: "덥네…… 뭐, 여름이니까.",
+   cardImage: "assets/images/kay_card.png",
+   popupImage: "assets/images/key_popup.png"
+  },
+  {
+   nameJP: "片桐 晶人",
+   nameKR: "카타기리 슈토",
+   gender: "남학생",
+   grade: 3,
+   className: "C",
+   age: "19세",
+   keyword: "나긋 / 능글 / 전교 1등",
+   quoteJP: "そこは日差しが強いから、こっちにおいで。",
+   quoteKR: "거긴 햇빛이 강하니까, 이리 와. ",
+   cardImage: "assets/images/shuto_card.png",
+   popupImage: "assets/images/shuto_popup.png"
   }
 ];
 
