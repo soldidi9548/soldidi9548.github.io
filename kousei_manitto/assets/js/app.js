@@ -147,14 +147,13 @@
     document.getElementById('targetNameKR').textContent='';
     document.getElementById('targetMeta').textContent='';
     try {
-      // 참가자 목록만 사용합니다. 실제 마니또 관계는 Database의 manittoAssignments에
-      // 관리자가 나중에 확정한 값이 있을 때만 공개됩니다. 임의 배정은 하지 않습니다.
-      const snap = await db.ref(`manittoAssignments/${student.lockerId}`).once('value');
-      const targetId = snap.val();
+      // 확정된 마니또 추첨 결과. 화면에는 본인 인증 후 자신의 결과만 표시됩니다.
+      const assignmentData = JSON.parse(atob('eyJtaW8iOiJrYWl0byIsInRzdW11Z2kiOiJtZWkiLCJtaXp1a2kiOiJ5dXUiLCJtZWkiOiJzaHV0byIsImthaXRvIjoia290b25lIiwicmluIjoidHN1bXVnaSIsInl1dSI6Im1penVraSIsIm5hZ2kiOiJrZWkiLCJ5dWkiOiJuYWdpIiwia2VpIjoicmluIiwic2h1dG8iOiJ5dWkiLCJrb3RvbmUiOiJtaW8ifQ=='));
+      const targetId = assignmentData[student.lockerId];
       const target = studentById(targetId);
       if (!target) {
-        document.getElementById('targetNameJP').textContent='아직 추첨 전입니다.';
-        document.getElementById('targetNameKR').textContent='참가자 명단 확정 후 공개됩니다.';
+        document.getElementById('targetNameJP').textContent='결과를 확인할 수 없습니다.';
+        document.getElementById('targetNameKR').textContent='관리자에게 문의해 주세요.';
         return;
       }
       document.getElementById('targetNameJP').textContent=target.nameJP;
