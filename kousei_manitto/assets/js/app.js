@@ -147,6 +147,8 @@
     document.getElementById('targetNameKR').textContent='';
     document.getElementById('targetMeta').textContent='';
     try {
+      // 참가자 목록만 사용합니다. 실제 마니또 관계는 Database의 manittoAssignments에
+      // 관리자가 나중에 확정한 값이 있을 때만 공개됩니다. 임의 배정은 하지 않습니다.
       const snap = await db.ref(`manittoAssignments/${student.lockerId}`).once('value');
       const targetId = snap.val();
       const target = studentById(targetId);

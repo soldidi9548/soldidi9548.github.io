@@ -11,7 +11,8 @@ window.KOUSEI_COURAGE = {
     {id:"yui", email:"yui@kousei.local", nameJP:"サクラバ ユイ", nameKR:"사쿠라바 유이", grade:2, className:"C", age:"18세"},
     {id:"kei", email:"kei@kousei.local", nameJP:"一ノ瀬 圭", nameKR:"이치노세 케이", grade:2, className:"C", age:"18세"},
     {id:"kaito", email:"kaito@kousei.local", nameJP:"長谷川 海斗", nameKR:"하세가와 카이토", grade:3, className:"A", age:"19세"},
-    {id:"shuto", email:"shuto@kousei.local", nameJP:"片桐 晶人", nameKR:"카타기리 슈토", grade:3, className:"C", age:"19세"}
+    {id:"shuto", email:"shuto@kousei.local", nameJP:"片桐 晶人", nameKR:"카타기리 슈토", grade:3, className:"C", age:"19세"},
+    {id:"kotone", email:"kotone@kousei.local", nameJP:"東雲 琴音", nameKR:"시노노메 코토네", grade:3, className:"C", age:"19세"}
   ],
   suspects: [
     {id:"haru", jp:"青木 春", kr:"아오키 하루", grade:"1학년", club:"사진부", order:2, item:"카메라"},

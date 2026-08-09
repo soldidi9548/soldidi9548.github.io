@@ -9,5 +9,6 @@ window.KOUSEI_STUDENTS = [
   {id:"yui", nameJP:"サクラバ ユイ", nameKR:"사쿠라바 유이", grade:2, className:"C"},
   {id:"kei", nameJP:"一ノ瀬 圭", nameKR:"이치노세 케이", grade:2, className:"C"},
   {id:"kaito", nameJP:"長谷川 海斗", nameKR:"하세가와 카이토", grade:3, className:"A"},
-  {id:"shuto", nameJP:"片桐 晶人", nameKR:"카타기리 슈토", grade:3, className:"C"}
+  {id:"shuto", nameJP:"片桐 晶人", nameKR:"카타기리 슈토", grade:3, className:"C"},
+  {id:"kotone", nameJP:"東雲 琴音", nameKR:"시노노메 코토네", grade:3, className:"C"}
 ];

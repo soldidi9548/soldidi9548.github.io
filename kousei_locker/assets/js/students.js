@@ -14,7 +14,8 @@ window.KOUSEI_STUDENTS = [
   { lockerId:"nagi", nameJP:"桐谷 凪", nameKR:"키리타니 나기", gender:"남학생", grade:2, className:"B", age:"18세" },
   { lockerId:"yui", nameJP:"サクラバ ユイ", nameKR:"사쿠라바 유이", gender:"여학생", grade:2, className:"C", age:"18세" },
   { lockerId:"kei", nameJP:"一ノ瀬 圭", nameKR:"이치노세 케이", gender:"남학생", grade:2, className:"C", age:"18세" },
-  { lockerId:"shuto", nameJP:"片桐 晶人", nameKR:"카타기리 슈토", gender:"남학생", grade:3, className:"C", age:"19세" }
+  { lockerId:"shuto", nameJP:"片桐 晶人", nameKR:"카타기리 슈토", gender:"남학생", grade:3, className:"C", age:"19세" },
+  { lockerId:"kotone", nameJP:"東雲 琴音", nameKR:"시노노메 코토네", gender:"여학생", grade:3, className:"C", age:"19세" }
 ];
 
 /* 새 학생 예시

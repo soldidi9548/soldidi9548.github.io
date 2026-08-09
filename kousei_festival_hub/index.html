@@ -36,29 +36,8 @@
           <button id="passportLoginBtn" class="primary-btn" type="button">패스포트 열기</button>
           <button id="passportLogoutBtn" class="ghost-btn" type="button" hidden>닫기</button>
         </div>
-        <div class="fragment-wallet">
-          <div><span>보유 조각</span><strong id="fragmentHeld">0</strong></div>
-          <div><span>보낸 조각</span><strong id="fragmentSent">0</strong></div>
-        </div>
-        <div class="fragment-actions">
-          <button id="sendOneFragment" type="button" disabled>조각 1개 보내기</button>
-          <button id="sendAllFragments" type="button" disabled>모두 보내기</button>
-        </div>
       </div>
       <div class="stamp-book" id="stampBook" aria-live="polite"></div>
-    </div>
-  </section>
-
-  <section class="firework-wrap wrap-narrow" id="fireworkScene">
-    <div class="firework-copy">
-      <div class="section-en">FIREWORK PROJECT</div>
-      <h2>바닷가 불꽃놀이 준비</h2>
-      <div id="fireworkMessage" class="firework-message"><strong>불꽃놀이 준비 중</strong><span>부스 도장 1개마다 축제 조각 1개를 얻어요. 패스포트에서 조각을 보내 주세요.</span></div>
-    </div>
-    <div class="firework-meter">
-      <div class="firework-meter-head"><span id="fireworkCount">0 / 30</span><strong id="fireworkPercent">0%</strong></div>
-      <div class="firework-track"><i id="fireworkFill"></i></div>
-      <div class="firework-sparks" aria-hidden="true"><i></i><i></i><i></i></div>
     </div>
   </section>
 
@@ -68,6 +47,7 @@
       <h2>축제 골목을 걸어보세요.</h2>
       <p>학교 공식 부스와 학생들이 직접 준비한 부스가 한 줄로 이어집니다. 간판을 누르면 바로 입장할 수 있어요.</p>
     </div>
+    <div class="guide-note">✦ 학생 부스는 준비되는 대로 이 골목에 하나씩 늘어납니다.</div>
   </section>
 
   <section class="street-section">
@@ -88,13 +68,10 @@
     </div>
   </section>
 
-  <section class="hall-wrap wrap-narrow" id="hallOfFame">
-    <div class="hall-head">
-      <div><div class="section-en">FESTIVAL HALL OF FAME</div><h2>축제 명예의 전당</h2><p>축제가 끝나는 8월 14일 오후 9시에 최종 기록이 공개됩니다.</p></div>
-      <div class="hall-countdown" id="hallCountdown">집계 대기 중</div>
-    </div>
-    <div class="hall-lock"><span>🏮</span><strong>아직 축제가 진행 중입니다.</strong><p>마감 전까지의 도장과 불꽃놀이 조각 기록이 최종 집계됩니다.</p></div>
-    <div class="hall-body" id="hallBody"></div>
+  <section class="coming wrap-narrow">
+    <div class="section-en">MORE STALLS SOON</div>
+    <h2>빈 자리도 곧 채워질 예정이에요.</h2>
+    <p>신청된 부스가 완성되면 새로운 천막과 간판이 축제 골목에 자동으로 추가됩니다.</p>
   </section>
 </main>
 
