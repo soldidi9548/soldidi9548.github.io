@@ -3,7 +3,8 @@
     "festivalBoothApplications": {
       ".read": "auth != null && auth.token.email == 'gm@kousei.local'",
       "$id": {
-        ".write": "!data.exists() || (auth != null && auth.token.email == 'gm@kousei.local')"
+        ".write": "auth != null && ((!data.exists() && newData.exists() && newData.child('leader').child('id').val() == auth.token.email.replace('@kousei.local','')) || (auth.token.email == 'gm@kousei.local'))",
+        ".validate": "!newData.exists() || newData.hasChildren(['receiptCode','boothName','leader','members','idea','status','createdAt'])"
       }
     }
   }

@@ -20,3 +20,4 @@ button,input,textarea{font:inherit} button{cursor:pointer}
 @media(max-width:700px){.picker-panel{max-height:260px}.picker-option{grid-template-columns:44px 1fr 20px}}
 
 .picker-class-prefix{font-size:12px;font-weight:900;color:#68849a;margin-right:7px;white-space:nowrap}.picker-name strong{display:flex!important;align-items:baseline;gap:2px;flex-wrap:wrap}
+.student-login{margin-bottom:18px}.login-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center}.login-row .submit{margin:0;white-space:nowrap}.self-leader{margin:10px 0;padding:14px 16px;border:1px solid #bad7eb;background:#f0f9ff;border-radius:14px;font-weight:900;color:#365b76}.field>.mini-btn{margin-top:8px}@media(max-width:700px){.login-row{grid-template-columns:1fr}.login-row .submit{width:100%}}
