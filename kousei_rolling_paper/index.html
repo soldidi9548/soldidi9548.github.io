@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#a9d8ef">
+<title>光星高校 · ROLLING PAPER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --sky:#7fc8f6;
+  --sky2:#dff3ff;
+  --deep:#2f73a7;
+  --navy:#173b5b;
+  --ink:#233646;
+  --muted:#718394;
+  --line:#c9d9e6;
+  --soft:#f5faff;
+  --paper:#fff;
+  --pink:#ef8aa2;
+  --shadow:6px 7px 0 #e6f2f9;
+  --content:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-width:320px;background:#fff;color:var(--ink);
+  font-family:"Noto Sans KR","Noto Sans JP",system-ui,-apple-system,sans-serif;
+  overflow-x:hidden
+}
+button,input,textarea,select{font:inherit}
+button{appearance:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+/* KOUSEI common hero */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#e9f8ff 0%,#fff 58%,#edf8fe 100%);
+  border-bottom:1px solid var(--line);
+  height:auto;padding:0;text-align:left
+}
+.hero::before{
+  content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(127,200,246,.38);
+  border-radius:50%;right:-130px;top:-190px;
+  box-shadow:0 0 0 56px rgba(127,200,246,.08),0 0 0 112px rgba(127,200,246,.045)
+}
+.hero::after{
+  content:"ROLLING PAPER";position:absolute;right:-18px;bottom:-40px;
+  font:900 100px/1 "Noto Sans JP",sans-serif;color:rgba(127,200,246,.08);
+  letter-spacing:.04em;pointer-events:none;background:none;width:auto;height:auto
+}
+.hero-inner{
+  position:relative;z-index:1;width:min(var(--content),calc(100% - 40px));
+  min-height:270px;margin:0 auto;display:flex;align-items:center;gap:28px;padding:58px 0
+}
+.school-mark{
+  width:82px;height:82px;flex:0 0 82px;display:grid;place-items:center;
+  background:var(--navy);color:#fff;font:900 38px/1 "Noto Sans JP";
+  box-shadow:8px 8px 0 #cceafb
+}
+.hero-copy{min-width:0}
+.eyebrow,.section-en{font-size:9px;letter-spacing:.23em;color:var(--deep);font-weight:900}
+.hero h1{
+  margin:9px 0 9px;font:900 clamp(40px,6vw,68px)/1.08 "Noto Sans JP","Noto Sans KR";
+  letter-spacing:-.04em;color:var(--navy)
+}
+.hero p{max-width:720px;margin:0;color:var(--muted);font-size:14px;line-height:1.9;word-break:keep-all}
+
+.wrap{width:min(var(--content),calc(100% - 40px));margin:0 auto;padding:58px 0 110px;position:relative;z-index:2}
+.topbar{
+  display:flex;justify-content:space-between;gap:18px;align-items:center;
+  padding:17px 20px;margin-bottom:46px;border:1px solid var(--line);
+  background:var(--soft);box-shadow:none;border-radius:0
+}
+.login-info{font-size:11px;color:var(--muted);line-height:1.6}.login-info b{color:var(--navy)}
+
+.btn{
+  border:1px solid var(--navy);border-radius:0;padding:11px 15px;font-weight:900;
+  cursor:pointer;background:var(--navy);color:#fff;font-size:11px;
+  transition:transform .15s ease,box-shadow .15s ease
+}
+.btn:hover{transform:translateY(-2px);box-shadow:4px 5px 0 #d9ebf5}
+.btn.soft{background:var(--deep);border-color:var(--deep)}
+.btn.pink{background:var(--pink);border-color:var(--pink)}
+.btn.gray{background:#fff;color:var(--navy);border-color:var(--line)}
+
+.layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start}
+.sidebar,.board{background:#fff;border:1px solid var(--line);border-radius:0;box-shadow:var(--shadow)}
+.sidebar{padding:22px;align-self:start;position:sticky;top:18px}
+.sidebar h2,.board h2{margin:6px 0 16px}
+.sidebar h2{font-size:24px;letter-spacing:-.04em}
+.search{
+  width:100%;height:44px;border:1px solid var(--line);border-radius:0;
+  padding:0 12px;background:#fff;margin-bottom:14px;outline:0;font-size:11px
+}
+.search:focus{border-color:#8fc7e9;box-shadow:0 0 0 3px rgba(127,200,246,.14)}
+.people{display:grid;gap:8px;max-height:67vh;overflow:auto;padding-right:3px}
+.person{
+  width:100%;text-align:left;border:1px solid #d9e5ed;background:#fff;border-radius:0;
+  padding:12px 13px;cursor:pointer;transition:.15s
+}
+.person:hover{border-color:#9ccbe6;background:#f8fcff}
+.person.active{background:#eef9ff;border-color:#88c9ed;box-shadow:3px 4px 0 #e4f2fa}
+.person strong{display:block;font-size:12px;color:var(--navy)}
+.person small{display:block;color:#8799a5;font-size:9px;margin-top:4px}
+
+.board{
+  padding:0;min-height:650px;position:relative;
+  background:#fff;overflow:hidden
+}
+.board-head{
+  display:flex;justify-content:space-between;gap:15px;align-items:flex-start;
+  border-bottom:1px solid var(--line);padding:26px 28px;background:linear-gradient(135deg,#f5fbff,#fff)
+}
+.board-head h2{font-size:30px;margin:5px 0 4px;letter-spacing:-.04em;color:var(--navy)}
+.meta{font-size:10px;color:var(--muted)}
+.count{
+  font-size:9px;font-weight:900;color:#fff;background:var(--deep);
+  border-radius:0;padding:9px 11px;letter-spacing:.08em;white-space:nowrap
+}
+
+/* memo paper remains the rolling-paper identity, but uses the Kousei palette */
+.notes{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;
+  padding:28px;background:
+    linear-gradient(rgba(255,255,255,.93),rgba(255,255,255,.93)),
+    repeating-linear-gradient(0deg,#eaf1f5 0 1px,transparent 1px 34px)
+}
+.note{
+  position:relative;min-height:176px;padding:20px 17px 16px;border-radius:0;
+  border:1px solid rgba(118,145,163,.28);box-shadow:4px 5px 0 rgba(202,221,232,.5);
+  transform:none;overflow:hidden
+}
+.note::before{
+  content:"";position:absolute;left:50%;top:0;transform:translate(-50%,-46%);
+  width:42px;height:16px;background:rgba(255,255,255,.72);border:1px solid rgba(198,215,225,.6)
+}
+.note:nth-child(4n+1){background:#fff7d8}
+.note:nth-child(4n+2){background:#fff0f4}
+.note:nth-child(4n+3){background:#edf8ff}
+.note:nth-child(4n){background:#eef8f2}
+.note p{margin:10px 0 17px;white-space:pre-wrap;line-height:1.75;font-size:12px;word-break:break-word}
+.note footer{font-size:9px;color:#667985;border-top:1px solid rgba(128,151,164,.22);padding-top:9px}
+
+.empty{text-align:center;color:#9aa9b3;padding:95px 20px;grid-column:1/-1}
+.empty b{display:block;font-size:30px;margin-bottom:10px;color:var(--sky)}
+
+.write{margin:0;padding:22px 28px 28px;border-top:1px solid var(--line);background:#fbfdff}
+.write textarea{
+  width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);border-radius:0;
+  padding:14px;background:#fff;outline:0;font-size:12px;line-height:1.7;color:var(--ink)
+}
+.write textarea:focus{border-color:#8fc7e9;box-shadow:0 0 0 3px rgba(127,200,246,.14)}
+.write-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px}
+.limit{font-size:9px;color:#8496a2}
+.status{font-size:10px;margin-top:9px;color:#b15c6d;min-height:16px}
+
+.modal{
+  position:fixed;inset:0;background:rgba(23,59,91,.42);display:none;
+  align-items:center;justify-content:center;padding:18px;z-index:50
+}
+.modal.open{display:flex}
+.dialog{
+  width:min(440px,100%);background:#fff;border:1px solid var(--line);border-radius:0;
+  padding:26px;box-shadow:10px 12px 0 rgba(204,234,251,.72)
+}
+.dialog h2{margin:7px 0 6px;font-size:27px;color:var(--navy)}
+.dialog p{font-size:11px;color:var(--muted);line-height:1.7}
+.dialog select,.dialog input{
+  width:100%;height:45px;padding:0 12px;border:1px solid var(--line);border-radius:0;
+  margin-top:9px;background:#fff;outline:0;font-size:11px
+}
+.dialog select:focus,.dialog input:focus{border-color:#8fc7e9;box-shadow:0 0 0 3px rgba(127,200,246,.14)}
+
+@media(max-width:860px){
+  .hero-inner{min-height:235px;padding:45px 0}
+  .school-mark{width:68px;height:68px;flex-basis:68px;font-size:31px}
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr));max-height:none}
+  .notes{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .hero-inner{width:min(var(--content),calc(100% - 28px));gap:16px}
+  .school-mark{width:58px;height:58px;flex-basis:58px;font-size:27px;box-shadow:6px 6px 0 #cceafb}
+  .hero h1{font-size:38px}
+  .hero p{font-size:11px}
+  .wrap{width:calc(100% - 28px);padding:38px 0 80px}
+  .topbar{align-items:stretch;flex-direction:column;margin-bottom:30px}
+  .topbar>div:last-child{width:100%}
+  .topbar .btn{flex:1;justify-content:center}
+  .people{grid-template-columns:1fr 1fr}
+  .board-head{padding:20px 18px}.board-head h2{font-size:23px}
+  .notes{grid-template-columns:1fr;padding:18px}
+  .write{padding:18px}
+}
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="school-mark">光</div>
+    <div class="hero-copy">
+      <div class="eyebrow">KOUSEI HIGH SCHOOL · SUMMER CAMP 2026</div>
+      <h1>ROLLING PAPER</h1>
+      <p>그 여름의 마지막에, 서로에게 남기는 한마디.</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+ <div class="topbar">
+   <div class="login-info" id="loginInfo">글을 남기려면 본인 확인이 필요합니다. <b>모든 롤링페이퍼는 누구나 열람할 수 있어요.</b></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap">
+     <a class="btn gray" href="admin.html" style="text-decoration:none;display:inline-flex;align-items:center">ADMIN</a>
+     <button class="btn" id="loginBtn">본인 확인</button>
+   </div>
+ </div>
+
+ <div class="layout">
+  <aside class="sidebar">
+   <div class="section-en">STUDENT BOARD</div>
+   <h2>롤링페이퍼 선택</h2>
+   <input class="search" id="search" placeholder="이름 · 학년 · 반 검색">
+   <div class="people" id="people"></div>
+  </aside>
+
+  <section class="board">
+   <div class="board-head">
+    <div>
+      <div class="section-en">TO · <span id="toJP">—</span></div>
+      <h2 id="toKR">학생을 선택해 주세요</h2>
+      <div class="meta" id="toMeta">왼쪽 목록에서 롤링페이퍼를 선택하세요.</div>
+    </div>
+    <div class="count" id="count">0 NOTES</div>
+   </div>
+
+   <div class="notes" id="notes"><div class="empty"><b>✦</b>아직 선택된 롤링페이퍼가 없습니다.</div></div>
+
+   <div class="write" id="writeBox" hidden>
+     <textarea id="message" maxlength="300" placeholder="이 학생에게 남길 말을 적어 주세요."></textarea>
+     <div class="write-foot">
+       <div class="limit"><span id="chars">0</span>/300 · 같은 학생에게 최대 <b>3개</b>까지 남길 수 있어요.</div>
+       <button class="btn pink" id="sendBtn">쪽지 붙이기</button>
+     </div>
+     <div class="status" id="writeStatus"></div>
+   </div>
+  </section>
+ </div>
+</main>
+
+<div class="modal" id="loginModal">
+ <div class="dialog">
+  <div class="section-en">IDENTITY CHECK</div>
+  <h2>본인 확인</h2>
+  <p>자기 캐릭터를 선택하고 코우세이 계정 비밀번호를 입력해 주세요. 이메일은 자동으로 연결됩니다.</p>
+  <select id="loginStudent"></select>
+  <input id="loginPassword" type="password" placeholder="비밀번호" autocomplete="current-password">
+  <div style="display:flex;gap:8px;margin-top:12px">
+    <button class="btn gray" id="cancelLogin" style="flex:1">취소</button>
+    <button class="btn" id="doLogin" style="flex:1">확인</button>
+  </div>
+  <div class="status" id="loginStatus"></div>
+ </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script src="assets/js/students.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script>
+const S=window.KOUSEI_STUDENTS;
+let db=null,auth=null,currentUser=null,currentStudent=null,selected=S[0],unsubscribe=null;
+const $=id=>document.getElementById(id);
+
+function initFirebase(){
+ const c=window.KOUSEI_FIREBASE_CONFIG||{};
+ if(!c.apiKey || c.apiKey.includes('PASTE_')){
+   $('loginInfo').innerHTML='Firebase API Key가 아직 설정되지 않았습니다. <b>읽기 화면은 볼 수 있지만 저장은 연결 후 가능합니다.</b>';
+   return false;
+ }
+ firebase.initializeApp(c); auth=firebase.auth(); db=firebase.database();
+ auth.onAuthStateChanged(u=>{
+   currentUser=u||null;
+   currentStudent=u?S.find(x=>u.email===x.id+'@kousei.local'):null;
+   renderLoginState(); renderWriteState();
+ });
+ return true;
+}
+
+function renderPeople(filter=''){
+ const q=filter.trim().toLowerCase();
+ $('people').innerHTML=S.filter(s=>(`${s.nameJP} ${s.nameKR} ${s.grade} ${s.className}`).toLowerCase().includes(q)).map(s=>
+ `<button class="person ${selected&&selected.id===s.id?'active':''}" data-id="${s.id}">
+   <strong>${s.grade}年 ${s.className}組 ${s.nameJP}</strong>
+   <small>${s.grade}학년 ${s.className}반 ${s.nameKR}</small>
+ </button>`).join('');
+ document.querySelectorAll('.person').forEach(b=>b.onclick=()=>selectBoard(b.dataset.id));
+}
+
+function selectBoard(id){
+ selected=S.find(s=>s.id===id); renderPeople($('search').value);
+ $('toJP').textContent=selected.nameJP;$('toKR').textContent=selected.nameKR;
+ $('toMeta').textContent=`${selected.grade}학년 ${selected.className}반 · 모두에게 공개되는 롤링페이퍼`;
+ listenNotes(); renderWriteState();
+}
+function listenNotes(){
+ if(unsubscribe){unsubscribe();unsubscribe=null}
+ if(!db){renderNotes([]);return}
+ const ref=db.ref('rollingPapers/'+selected.id);
+ const cb=snap=>{
+   const arr=[];snap.forEach(c=>arr.push({id:c.key,...c.val()}));arr.sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));renderNotes(arr);
+ };
+ ref.on('value',cb);unsubscribe=()=>ref.off('value',cb);
+}
+function renderNotes(arr){
+ $('count').textContent=`${arr.length} NOTES`;
+ if(!arr.length){$('notes').innerHTML='<div class="empty"><b>💌</b>아직 첫 쪽지가 없어요.<br>첫 번째 말을 남겨보세요.</div>';return}
+ $('notes').innerHTML=arr.map(n=>`<article class="note">
+   <p>${escapeHTML(n.message||'')}</p>
+   <footer>FROM · ${escapeHTML(n.senderNameJP||'—')} · ${escapeHTML(n.senderNameKR||'—')}</footer>
+ </article>`).join('');
+}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+
+function renderLoginState(){
+ if(currentStudent){
+  $('loginInfo').innerHTML=`현재 작성자 · <b>${currentStudent.nameJP} · ${currentStudent.nameKR}</b>`;
+  $('loginBtn').textContent='로그아웃'; $('loginBtn').onclick=()=>auth.signOut();
+ }else{
+  $('loginInfo').innerHTML='글을 남기려면 본인 확인이 필요합니다. <b>모든 롤링페이퍼는 누구나 열람할 수 있어요.</b>';
+  $('loginBtn').textContent='본인 확인'; $('loginBtn').onclick=()=>$('loginModal').classList.add('open');
+ }
+}
+function renderWriteState(){
+ $('writeBox').hidden=!(selected&&currentStudent);
+ if(currentStudent&&selected) $('message').placeholder=`${selected.nameKR}에게 남길 말을 적어 주세요.`;
+}
+
+$('search').oninput=e=>renderPeople(e.target.value);
+$('message').oninput=e=>$('chars').textContent=e.target.value.length;
+
+$('sendBtn').onclick=async()=>{
+ const msg=$('message').value.trim(); $('writeStatus').textContent='';
+ if(!currentStudent||!db){$('writeStatus').textContent='먼저 본인 확인과 Firebase 연결이 필요합니다.';return}
+ if(!msg){$('writeStatus').textContent='내용을 입력해 주세요.';return}
+ const mineSnap=await db.ref('rollingPapers/'+selected.id).orderByChild('senderId').equalTo(currentStudent.id).once('value');
+ if(mineSnap.numChildren()>=3){$('writeStatus').textContent='이 학생에게는 최대 3개까지 남길 수 있어요.';return}
+ const ref=db.ref('rollingPapers/'+selected.id).push();
+ await ref.set({recipientId:selected.id,senderId:currentStudent.id,senderNameJP:currentStudent.nameJP,senderNameKR:currentStudent.nameKR,message:msg,createdAt:firebase.database.ServerValue.TIMESTAMP});
+ $('message').value='';$('chars').textContent='0';$('writeStatus').style.color='#4d8d70';$('writeStatus').textContent='롤링페이퍼에 쪽지를 붙였습니다. ✦';
+ setTimeout(()=>{$('writeStatus').textContent='';$('writeStatus').style.color=''},2200);
+};
+
+$('loginStudent').innerHTML=S.map(s=>`<option value="${s.id}">${s.grade}年 ${s.className}組 ${s.nameJP} · ${s.nameKR}</option>`).join('');
+$('cancelLogin').onclick=()=>$('loginModal').classList.remove('open');
+$('doLogin').onclick=async()=>{
+ if(!auth){$('loginStatus').textContent='Firebase API Key를 먼저 설정해 주세요.';return}
+ const id=$('loginStudent').value,pw=$('loginPassword').value;
+ $('loginStatus').textContent='확인 중…';
+ try{await auth.signInWithEmailAndPassword(id+'@kousei.local',pw);$('loginModal').classList.remove('open');$('loginPassword').value='';$('loginStatus').textContent='';}
+ catch(e){$('loginStatus').textContent='비밀번호가 맞지 않거나 로그인할 수 없습니다.'}
+};
+
+renderPeople();selectBoard(S[0].id);initFirebase();renderLoginState();
+</script>
+</body>
+</html>

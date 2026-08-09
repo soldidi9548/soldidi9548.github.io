@@ -1,0 +1,18 @@
+{
+  "rollingPapers": {
+    ".read": true,
+    "$recipientId": {
+      "$messageId": {
+        ".write": "auth != null && ((!data.exists() && newData.exists() && newData.child('senderId').val() == auth.token.email.replace('@kousei.local','')) || (data.exists() && !newData.exists() && auth.token.email == 'gm@kousei.local'))",
+        ".validate": "!newData.exists() || newData.hasChildren(['recipientId','senderId','senderNameJP','senderNameKR','message','createdAt'])",
+        "recipientId": { ".validate": "!newData.exists() || (newData.isString() && newData.val() == $recipientId)" },
+        "senderId": { ".validate": "!newData.exists() || newData.isString()" },
+        "senderNameJP": { ".validate": "!newData.exists() || (newData.isString() && newData.val().length <= 50)" },
+        "senderNameKR": { ".validate": "!newData.exists() || (newData.isString() && newData.val().length <= 50)" },
+        "message": { ".validate": "!newData.exists() || (newData.isString() && newData.val().length > 0 && newData.val().length <= 300)" },
+        "createdAt": { ".validate": "!newData.exists() || newData.isNumber()" },
+        "$other": { ".validate": false }
+      }
+    }
+  }
+}
