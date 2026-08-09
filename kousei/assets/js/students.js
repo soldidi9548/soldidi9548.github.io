@@ -149,6 +149,19 @@ window.KOUSEI_STUDENTS = [
    quoteKR: "거긴 햇빛이 강하니까, 이리 와. ",
    cardImage: "assets/images/shuto_card.png",
    popupImage: "assets/images/shuto_popup.png"
+  },
+  {
+   nameJP: "東雲 琴音",
+   nameKR: "시노노메 코토네",
+   gender: "여학생",
+   grade: 3,
+   className: "C",
+   age: "19세",
+   keyword: "상냥함 / 관찰형 / 다도부",
+   quoteJP: " 楽しんでいきますね。",
+   quoteKR: "즐겁게 지내다 갈게요.",
+   cardImage: "assets/images/kotone_card.png",
+   popupImage: "assets/images/kotone_popup.png"
   }
 ];
 
