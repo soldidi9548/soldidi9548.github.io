@@ -36,7 +36,7 @@ shuto@kousei.local    카타기리 슈토
           ".validate": "newData.hasChildren(['message', 'imagePath', 'createdAt'])",
           "message": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 500" },
           "imagePath": { ".validate": "newData.isString() && newData.val().beginsWith('locker-gifts/' + $lockerId + '/') && newData.val().length <= 500" },
-          "createdAt": { ".validate": "newData.isNumber() && newData.val() <= now && newData.val() >= now - 60000" },
+          "createdAt": { ".validate": "newData.isNumber()" },
           "$other": { ".validate": false }
         }
       }

@@ -1,0 +1,23 @@
+기존 전체 Realtime Database Rules에서 lockerMessages 블록만 아래 내용으로 교체하세요.
+
+"lockerMessages": {
+  "$lockerId": {
+    ".read": "auth != null && auth.token.email == $lockerId + '@kousei.local'",
+    "$messageId": {
+      ".write": "!data.exists() && newData.exists()",
+      ".validate": "newData.hasChildren(['message','imagePath','createdAt'])",
+      "message": {
+        ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 500"
+      },
+      "imagePath": {
+        ".validate": "newData.isString() && newData.val().beginsWith('locker-gifts/' + $lockerId + '/') && newData.val().length <= 500"
+      },
+      "createdAt": {
+        ".validate": "newData.isNumber()"
+      },
+      "$other": {
+        ".validate": false
+      }
+    }
+  }
+}

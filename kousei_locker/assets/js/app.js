@@ -130,12 +130,56 @@
     const file=giftImage.files&&giftImage.files[0], message=giftMessage.value.trim(); if(!file||!message)return;
     if(!file.type.startsWith('image/')||file.size>5*1024*1024){showToast('이미지 형식이나 용량을 확인해 주세요.');return;}
     sendButton.disabled=true; formStatus.textContent='선물을 사물함에 넣고 있습니다…'; formStatus.className='form-status working';
+    let uploadedPath = '';
     try{
-      const ext=(file.name.split('.').pop()||'img').replace(/[^a-zA-Z0-9]/g,'').slice(0,8)||'img'; const filename=`${Date.now()}-${cryptoRandom()}.${ext}`; const path=`locker-gifts/${activeStudent.lockerId}/${filename}`;
-      await storage.ref(path).put(file,{contentType:file.type});
-      await db.ref(`lockerMessages/${activeStudent.lockerId}`).push().set({message,imagePath:path,createdAt:Date.now()});
-      resetForm(); showToast(`${activeStudent.nameKR}의 사물함에 선물을 남겼습니다. 🎁`);
-    }catch(error){console.error(error);formStatus.textContent='선물을 등록하지 못했습니다. Firebase 규칙을 확인해 주세요.';formStatus.className='form-status error';sendButton.disabled=false;}
+      const ext=(file.name.split('.').pop()||'img').replace(/[^a-zA-Z0-9]/g,'').slice(0,8)||'img';
+      const filename=`${Date.now()}-${cryptoRandom()}.${ext}`;
+      const path=`locker-gifts/${activeStudent.lockerId}/${filename}`;
+      uploadedPath = path;
+
+      // 1) Storage 업로드
+      try {
+        await storage.ref(path).put(file,{contentType:file.type});
+      } catch (storageError) {
+        console.error('STORAGE_UPLOAD_FAILED', storageError);
+        const code = storageError && storageError.code ? storageError.code : 'unknown';
+        throw new Error(`STORAGE:${code}`);
+      }
+
+      // 2) Realtime Database 기록
+      // 클라이언트 시계 오차 때문에 규칙에 걸리지 않도록 Firebase 서버 시간을 사용합니다.
+      try {
+        await db.ref(`lockerMessages/${activeStudent.lockerId}`).push().set({
+          message,
+          imagePath:path,
+          createdAt:firebase.database.ServerValue.TIMESTAMP
+        });
+      } catch (databaseError) {
+        console.error('DATABASE_WRITE_FAILED', databaseError);
+
+        // DB 기록 실패 시 고아 이미지가 남지 않도록 삭제를 시도합니다.
+        // 현재 Storage 규칙에서 delete가 막혀 있으면 삭제 실패는 무시됩니다.
+        try { await storage.ref(path).delete(); } catch (_) {}
+
+        const code = databaseError && databaseError.code ? databaseError.code : 'unknown';
+        throw new Error(`DATABASE:${code}`);
+      }
+
+      resetForm();
+      showToast(`${activeStudent.nameKR}의 사물함에 선물을 남겼습니다. 🎁`);
+    }catch(error){
+      console.error(error);
+      const raw = String(error && error.message ? error.message : error);
+      if(raw.startsWith('STORAGE:')){
+        formStatus.textContent=`이미지 업로드 단계에서 실패했습니다. (${raw.replace('STORAGE:','')})`;
+      }else if(raw.startsWith('DATABASE:')){
+        formStatus.textContent=`이미지는 올라갔지만 사물함 기록 저장에 실패했습니다. (${raw.replace('DATABASE:','')})`;
+      }else{
+        formStatus.textContent='선물을 등록하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+      }
+      formStatus.className='form-status error';
+      sendButton.disabled=false;
+    }
   });
 
   function cryptoRandom(){if(window.crypto&&window.crypto.getRandomValues){const a=new Uint32Array(2);window.crypto.getRandomValues(a);return`${a[0].toString(36)}${a[1].toString(36)}`;}return Math.random().toString(36).slice(2,12);}
