@@ -9,7 +9,7 @@
   const roomView=$('#roomView'), roomBody=$('#roomBody');
   const rootRef=db.ref('courageGame'), currentRef=rootRef.child('current');
   let mode='player', currentUser=null, me=null, isGM=false, latestState={}, latestRoom={}, rootListener=null;
-  let toastTimer=null, endingTimer=null, matchmakingLock=false;
+  let toastTimer=null, endingTimer=null, matchmakingLock=false, gmPreviewId=null;
 
   const realPlayersById=Object.fromEntries(CFG.players.map(p=>[p.id,p]));
   const playerByEmail=email=>CFG.players.find(p=>p.email.toLowerCase()===String(email||'').toLowerCase());
@@ -59,7 +59,7 @@
       latestState=snap.val()||{};
       latestRoom=latestState.current||{};
       if(isGM){
-        if(latestState.current) renderCurrent(latestState.current); else renderGMQueue(latestState);
+        if(latestState.current) renderCurrent(latestState.current); else {gmPreviewId=null; renderGMQueue(latestState);}
       }else{
         const status=latestState.playerStatus?.[me.id]?.status;
         me.status=status;
@@ -228,9 +228,29 @@
 
   function renderCurrent(r){
     latestRoom=r||{};
-    if(isGM) renderGM(latestRoom);
-    else if((latestRoom.players||[]).includes(me.id)) renderPlayer(latestRoom,me.id,false);
+    if(isGM){
+      const ids=activeIds(latestRoom);
+      if(gmPreviewId && ids.includes(gmPreviewId)){
+        renderPlayer(latestRoom,gmPreviewId,true);
+        [...roomBody.querySelectorAll('button,input,select,textarea')].forEach(el=>el.disabled=true);
+        prependGMViewSwitcher(latestRoom);
+      }else{
+        gmPreviewId=null;
+        renderGM(latestRoom);
+        prependGMViewSwitcher(latestRoom);
+      }
+    }else if((latestRoom.players||[]).includes(me.id)) renderPlayer(latestRoom,me.id,false);
     else renderQueue(latestState||{});
+  }
+
+  function prependGMViewSwitcher(r){
+    if(!isGM)return;
+    const ids=activeIds(r);
+    const wrap=document.createElement('div');
+    wrap.className='card test-switcher';
+    wrap.innerHTML=`<span class="eyebrow">GM LIVE VIEW</span><div class="test-tabs"><button class="ghost small gm-live-view ${!gmPreviewId?'active':''}" data-view="gm">GM 화면</button>${ids.map((id,i)=>`<button class="ghost small gm-live-view ${gmPreviewId===id?'active':''}" data-view="${esc(id)}">P${i+1} · ${esc(playerMeta(id).nameKR)}</button>`).join('')}</div><div class="tiny">플레이어가 실제로 보고 있는 화면을 읽기 전용으로 확인합니다.</div>`;
+    roomBody.prepend(wrap);
+    $$('.gm-live-view').forEach(b=>{b.disabled=false;b.onclick=()=>{gmPreviewId=b.dataset.view==='gm'?null:b.dataset.view;renderCurrent(latestRoom||{})}});
   }
 
   function renderQueue(state){
