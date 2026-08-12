@@ -164,6 +164,68 @@
     return investigators.every(id=>assignments[id].every(idx=>Number(obj?.[id]?.[idx])===Number(CFG.stages[4].objectives[idx].answer)));
   }
 
+  async function advance(nextStage,nextSubstep){
+    await currentRef.transaction(cur=>{
+      if(!cur)return cur;
+      cur.stage=nextStage;
+      cur.substep=nextSubstep;
+      delete cur.votes;
+      cur.hintLevel=0;
+      if(nextStage!==4){delete cur.objectives;cur.testimonyUsed=0}
+      if(nextStage!==5){delete cur.attendance;delete cur.ending}
+      return cur;
+    });
+  }
+
+  async function guardedStep(expectedStage,expectedSubstep,patch){
+    await currentRef.transaction(cur=>{
+      if(!cur)return cur;
+      if(Number(cur.stage||0)!==Number(expectedStage))return cur;
+      if((cur.substep||'main')!==expectedSubstep)return cur;
+      Object.entries(patch).forEach(([k,v])=>{
+        if(v===null) delete cur[k]; else cur[k]=v;
+      });
+      return cur;
+    });
+  }
+
+  async function maybeAutoAdvance(r){
+    const s=roomStage(r), ss=sub(r);
+    if(s===1 && allSameVote(r,'s1',CFG.stages[1].answer)){
+      return guardedStep(1,'main',{stage:2,substep:'time',votes:null,hintLevel:0});
+    }
+    if(s===2 && ss==='time' && allSameVote(r,'s2time',CFG.stages[2].timeAnswer)){
+      return guardedStep(2,'time',{substep:'meaning',votes:null,hintLevel:0});
+    }
+    if(s===2 && ss==='meaning' && allSameVote(r,'s2meaning',CFG.stages[2].meaningAnswer)){
+      return guardedStep(2,'meaning',{stage:3,substep:'different',votes:null,hintLevel:0});
+    }
+    if(s===3 && ss==='different' && allSameVote(r,'s3different',r.distortedId)){
+      return guardedStep(3,'different',{substep:'count',votes:null,hintLevel:0});
+    }
+    if(s===3 && ss==='count' && allSameVote(r,'s3count',CFG.stages[3].countAnswer)){
+      return guardedStep(3,'count',{substep:'map',votes:null,hintLevel:0});
+    }
+    if(s===3 && ss==='map' && allSameVote(r,'s3map',CFG.stages[3].mapAnswer)){
+      return guardedStep(3,'map',{stage:4,substep:'witness',votes:null,hintLevel:0,objectives:null,testimonyUsed:0});
+    }
+    if(s===4 && ss==='witness' && objectivesComplete(r)){
+      return guardedStep(4,'witness',{substep:'truth',votes:null,hintLevel:0});
+    }
+    if(s===4 && ss==='truth' && allSameVote(r,'s4truth',CFG.stages[4].truthAnswer)){
+      return guardedStep(4,'truth',{stage:5,substep:'fact',votes:null,hintLevel:0});
+    }
+    if(s===5 && ss==='fact' && allSameVote(r,'ffact',CFG.stages.final.factAnswer)){
+      return guardedStep(5,'fact',{substep:'soraCheck',votes:null,hintLevel:0});
+    }
+    if(s===5 && ss==='pattern' && allSameVote(r,'fpattern',CFG.stages.final.patternAnswer)){
+      return guardedStep(5,'pattern',{substep:'repair',votes:null,hintLevel:0});
+    }
+    if(s===5 && ss==='repair' && allSameVote(r,'frepair',CFG.stages.final.endingAnswer)){
+      return guardedStep(5,'repair',{substep:'attendance',votes:null,hintLevel:0,attendance:null});
+    }
+  }
+
   function renderCurrent(r){
     latestRoom=r||{};
     if(isGM) renderGM(latestRoom);
