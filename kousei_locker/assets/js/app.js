@@ -98,14 +98,37 @@
     stopGiftListener();
     if(!db){ giftCount.textContent='–'; giftList.innerHTML='<div class="setup-warning"><strong>Firebase 연결 전입니다.</strong></div>'; return; }
     const ref=db.ref(`lockerMessages/${student.lockerId}`);
-    const listener=snapshot=>{ const rows=[]; snapshot.forEach(child=>rows.push({id:child.key,...child.val()})); rows.sort((a,b)=>Number(b.createdAt||0)-Number(a.createdAt||0)); renderGifts(rows); };
+    const listener=snapshot=>{
+      // Firebase snapshot 자체의 자식 수를 먼저 화면에 반영한다.
+      // 이후 특정 선물 데이터가 비정상이어도 카운트가 잘못 줄어들지 않는다.
+      const snapshotCount=snapshot.numChildren();
+      giftCount.textContent=String(snapshotCount);
+      console.log('[locker] snapshot', student.lockerId, 'count=', snapshotCount, snapshot.val());
+
+      const rows=[];
+      snapshot.forEach(child=>{
+        try{
+          const value=child.val();
+          const row=(value && typeof value==='object' && !Array.isArray(value)) ? value : {message:safeText(value)};
+          rows.push({id:child.key,...row});
+        }catch(error){
+          console.error('[locker] malformed gift skipped:', child.key, error);
+          rows.push({id:child.key,message:'',createdAt:0,imagePath:'',_malformed:true});
+        }
+        return false;
+      });
+      try{
+        rows.sort((a,b)=>(Number(b.createdAt)||0)-(Number(a.createdAt)||0));
+      }catch(error){ console.error('[locker] sort failed:', error); }
+      renderGifts(rows, snapshotCount);
+    };
     ref.on('value',listener,error=>{ console.error(error); giftList.innerHTML='<div class="error-state">본인 확인 또는 Database 규칙을 확인해 주세요.</div>'; });
     activeListenerRef=ref; activeListenerFn=listener;
   }
 
-  function renderGifts(rows){
-    // DB에서 읽힌 선물 수는 이미지 로딩과 무관하게 즉시 표시한다.
-    giftCount.textContent=String(rows.length);
+  function renderGifts(rows, snapshotCount=rows.length){
+    // 카운트는 변환된 rows.length가 아니라 Firebase snapshot의 실제 자식 수를 사용한다.
+    giftCount.textContent=String(snapshotCount);
     giftList.replaceChildren();
 
     if(!rows.length){
