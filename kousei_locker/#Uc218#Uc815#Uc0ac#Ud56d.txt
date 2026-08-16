@@ -1,0 +1,9 @@
+선물 등록 오류 수정
+
+1. createdAt을 브라우저 Date.now()가 아니라 Firebase ServerValue.TIMESTAMP로 변경
+2. Realtime Database의 60초 시간 오차 제한 제거
+3. 오류 메시지를 Storage 실패 / Database 실패로 분리
+4. 콘솔에도 STORAGE_UPLOAD_FAILED / DATABASE_WRITE_FAILED를 따로 출력
+
+이 버전을 GitHub에 덮어쓴 뒤 다시 테스트하세요.
+실패하면 화면에 표시되는 괄호 안 오류 코드(storage/unauthorized 등)를 그대로 확인할 수 있습니다.

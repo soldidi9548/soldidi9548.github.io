@@ -103,19 +103,52 @@
     activeListenerRef=ref; activeListenerFn=listener;
   }
 
-  async function renderGifts(rows){
-    giftCount.textContent=rows.length; giftList.replaceChildren();
-    if(!rows.length){ const e=document.createElement('div'); e.className='locker-empty'; e.innerHTML='<span>🎁</span><strong>아직 도착한 선물이 없습니다.</strong><p>첫 번째 익명 선물을 기다리고 있어요.</p>'; giftList.appendChild(e); return; }
-    for(const row of rows){
+  function renderGifts(rows){
+    // DB에서 읽힌 선물 수는 이미지 로딩과 무관하게 즉시 표시한다.
+    giftCount.textContent=String(rows.length);
+    giftList.replaceChildren();
+
+    if(!rows.length){
+      const e=document.createElement('div');
+      e.className='locker-empty';
+      e.innerHTML='<span>🎁</span><strong>아직 도착한 선물이 없습니다.</strong><p>첫 번째 익명 선물을 기다리고 있어요.</p>';
+      giftList.appendChild(e);
+      return;
+    }
+
+    // 카드부터 전부 즉시 만든 뒤, 각 이미지 URL은 독립적으로 비동기 로드한다.
+    // 특정 이미지가 404여도 다른 선물 카드 렌더링에는 영향을 주지 않는다.
+    rows.forEach(row => {
       const article=document.createElement('article'); article.className='gift-card';
       const imageWrap=document.createElement('div'); imageWrap.className='gift-image';
       const img=document.createElement('img'); img.alt='익명 선물 이미지'; img.loading='lazy';
-      try { img.src = row.imagePath ? await storage.ref(row.imagePath).getDownloadURL() : safeText(row.imageUrl); } catch(e){ img.alt='이미지를 불러올 수 없습니다'; }
-      img.addEventListener('click',()=>{ if(img.src) window.open(img.src,'_blank','noopener'); }); imageWrap.appendChild(img);
+      imageWrap.appendChild(img);
+
       const body=document.createElement('div'); body.className='gift-body';
-      const top=document.createElement('div'); top.className='gift-topline'; const anon=document.createElement('strong'); anon.textContent='ANONYMOUS GIFT'; const time=document.createElement('time'); time.textContent=formatDate(row.createdAt); top.append(anon,time);
-      const message=document.createElement('p'); message.textContent=safeText(row.message); body.append(top,message); article.append(imageWrap,body); giftList.appendChild(article);
-    }
+      const top=document.createElement('div'); top.className='gift-topline';
+      const anon=document.createElement('strong'); anon.textContent='ANONYMOUS GIFT';
+      const time=document.createElement('time'); time.textContent=formatDate(row.createdAt);
+      top.append(anon,time);
+      const message=document.createElement('p'); message.textContent=safeText(row.message);
+      body.append(top,message);
+      article.append(imageWrap,body);
+      giftList.appendChild(article);
+
+      const setImage = url => {
+        if(!url) throw new Error('No gift image URL');
+        img.src=url;
+        img.addEventListener('click',()=>window.open(url,'_blank','noopener'),{once:true});
+      };
+
+      if(row.imagePath && storage){
+        storage.ref(row.imagePath).getDownloadURL()
+          .then(setImage)
+          .catch(error => { console.warn('Gift image load failed:', row.id, row.imagePath, error); img.alt='이미지를 불러올 수 없습니다'; });
+      } else {
+        try { setImage(safeText(row.imageUrl)); }
+        catch(error){ console.warn('Gift image URL missing:', row.id); img.alt='이미지를 불러올 수 없습니다'; }
+      }
+    });
   }
 
   function formatDate(timestamp){ const d=new Date(Number(timestamp)); if(Number.isNaN(d.getTime())) return ''; return new Intl.DateTimeFormat('ko-KR',{month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(d); }
@@ -130,56 +163,12 @@
     const file=giftImage.files&&giftImage.files[0], message=giftMessage.value.trim(); if(!file||!message)return;
     if(!file.type.startsWith('image/')||file.size>5*1024*1024){showToast('이미지 형식이나 용량을 확인해 주세요.');return;}
     sendButton.disabled=true; formStatus.textContent='선물을 사물함에 넣고 있습니다…'; formStatus.className='form-status working';
-    let uploadedPath = '';
     try{
-      const ext=(file.name.split('.').pop()||'img').replace(/[^a-zA-Z0-9]/g,'').slice(0,8)||'img';
-      const filename=`${Date.now()}-${cryptoRandom()}.${ext}`;
-      const path=`locker-gifts/${activeStudent.lockerId}/${filename}`;
-      uploadedPath = path;
-
-      // 1) Storage 업로드
-      try {
-        await storage.ref(path).put(file,{contentType:file.type});
-      } catch (storageError) {
-        console.error('STORAGE_UPLOAD_FAILED', storageError);
-        const code = storageError && storageError.code ? storageError.code : 'unknown';
-        throw new Error(`STORAGE:${code}`);
-      }
-
-      // 2) Realtime Database 기록
-      // 클라이언트 시계 오차 때문에 규칙에 걸리지 않도록 Firebase 서버 시간을 사용합니다.
-      try {
-        await db.ref(`lockerMessages/${activeStudent.lockerId}`).push().set({
-          message,
-          imagePath:path,
-          createdAt:firebase.database.ServerValue.TIMESTAMP
-        });
-      } catch (databaseError) {
-        console.error('DATABASE_WRITE_FAILED', databaseError);
-
-        // DB 기록 실패 시 고아 이미지가 남지 않도록 삭제를 시도합니다.
-        // 현재 Storage 규칙에서 delete가 막혀 있으면 삭제 실패는 무시됩니다.
-        try { await storage.ref(path).delete(); } catch (_) {}
-
-        const code = databaseError && databaseError.code ? databaseError.code : 'unknown';
-        throw new Error(`DATABASE:${code}`);
-      }
-
-      resetForm();
-      showToast(`${activeStudent.nameKR}의 사물함에 선물을 남겼습니다. 🎁`);
-    }catch(error){
-      console.error(error);
-      const raw = String(error && error.message ? error.message : error);
-      if(raw.startsWith('STORAGE:')){
-        formStatus.textContent=`이미지 업로드 단계에서 실패했습니다. (${raw.replace('STORAGE:','')})`;
-      }else if(raw.startsWith('DATABASE:')){
-        formStatus.textContent=`이미지는 올라갔지만 사물함 기록 저장에 실패했습니다. (${raw.replace('DATABASE:','')})`;
-      }else{
-        formStatus.textContent='선물을 등록하지 못했습니다. 잠시 후 다시 시도해 주세요.';
-      }
-      formStatus.className='form-status error';
-      sendButton.disabled=false;
-    }
+      const ext=(file.name.split('.').pop()||'img').replace(/[^a-zA-Z0-9]/g,'').slice(0,8)||'img'; const filename=`${Date.now()}-${cryptoRandom()}.${ext}`; const path=`locker-gifts/${activeStudent.lockerId}/${filename}`;
+      await storage.ref(path).put(file,{contentType:file.type});
+      await db.ref(`lockerMessages/${activeStudent.lockerId}`).push().set({message,imagePath:path,createdAt:Date.now()});
+      resetForm(); showToast(`${activeStudent.nameKR}의 사물함에 선물을 남겼습니다. 🎁`);
+    }catch(error){console.error(error);formStatus.textContent='선물을 등록하지 못했습니다. Firebase 규칙을 확인해 주세요.';formStatus.className='form-status error';sendButton.disabled=false;}
   });
 
   function cryptoRandom(){if(window.crypto&&window.crypto.getRandomValues){const a=new Uint32Array(2);window.crypto.getRandomValues(a);return`${a[0].toString(36)}${a[1].toString(36)}`;}return Math.random().toString(36).slice(2,12);}
