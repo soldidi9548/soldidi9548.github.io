@@ -460,7 +460,7 @@ button,input,textarea{font:inherit;color:inherit}
     } else if (!GB.ready){
       card = '<div class="gcard hint">사과를 불러오는 중이에요</div>';
     } else if (!GB.db){
-      card = '<div class="gcard hint">지금은 방명록을 불러올 수 없어요</div>';
+      card = '<div class="gcard hint">지금은 방명록을 불러올 수 없어요'+(GB.err?'<br><small>('+esc(GB.err)+(GB.authErr?' / '+esc(GB.authErr):'')+')</small>':'')+'</div>';
     } else if (!list.length){
       card = '<div class="gcard hint">아직 열린 사과가 없어요. 첫 사과를 달아 주세요!</div>';
     } else {
@@ -500,6 +500,11 @@ button,input,textarea{font:inherit;color:inherit}
       var appMod = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
       var fs = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
       var app = appMod.initializeApp(FIREBASE_CONFIG);
+      try {
+        var authMod = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');
+        var auth = authMod.getAuth(app);
+        if (!auth.currentUser) await authMod.signInAnonymously(auth);
+      } catch(ae){ GB.authErr = (ae && ae.code) || 'auth'; }
       var db = fs.getFirestore(app);
       FB = {fs: fs, col: fs.collection(db, 'guestbook')};
       GB.db = true; GB.canWrite = true;
@@ -510,8 +515,8 @@ button,input,textarea{font:inherit;color:inherit}
           return {id: d.id, name: String(v.name || '익명'), msg: String(v.text || ''), at: t};
         }).reverse();
         GB.ready = true; refreshGuestbook();
-      }, function(){ GB.ready = true; GB.db = null; refreshGuestbook(); });
-    } catch(e){ GB.ready = true; GB.db = null; refreshGuestbook(); }
+      }, function(err){ GB.err = (err && err.code) || 'snapshot'; GB.ready = true; GB.db = null; refreshGuestbook(); });
+    } catch(e){ GB.err = (e && (e.code || e.message)) || 'load'; GB.ready = true; GB.db = null; refreshGuestbook(); }
   })();
   async function addApple(form, w){
     var n = form.elements.n.value.trim(), m = form.elements.m.value.trim();
